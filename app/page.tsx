@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Brain, Zap, Users, Microscope, ArrowRight, Github, Mail, MapPin, Calendar } from "lucide-react"
+import { Brain, Zap, Users, Microscope, ArrowRight, Github, Mail, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
 
 function FullPageParallax() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -41,7 +41,7 @@ function FullPageParallax() {
           style={{ background: "radial-gradient(ellipse at center, rgba(20,30,60,0.6) 0%, rgba(10,10,30,1) 80%)", filter: "blur(40px)" }}
         />
         <div className="relative z-10 max-w-4xl text-center px-6">
-          <h2 className="text-6xl font-bold mb-4">
+          <h2 className="text-6xl font-light mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Deep Motion
             </span>
@@ -146,38 +146,48 @@ export default function NeuroTechWebsite() {
       
       const handleBrainOverlay = () => {
         const footerSection = document.querySelector('footer')
+        const joinSection = document.getElementById('join')
         const overlay = document.getElementById('brain-overlay')
         const brainImage = document.getElementById('brain-image')
         
-        if (footerSection && overlay && brainImage) {
-          const rect = footerSection.getBoundingClientRect()
+        if (footerSection && joinSection && overlay && brainImage) {
+          const joinRect = joinSection.getBoundingClientRect()
+          const footerRect = footerSection.getBoundingClientRect()
           const windowHeight = window.innerHeight
           
-          // Calculate how much of the footer is visible
-          const visibleStart = Math.max(0, windowHeight - rect.bottom)
-          const visibleEnd = Math.max(0, windowHeight - rect.top)
-          const totalVisible = Math.min(visibleEnd, rect.height)
-          const visiblePercentage = Math.max(0, Math.min(totalVisible / rect.height, 1))
+          // Calculate visibility based on join section
+          const joinVisibleStart = Math.max(0, windowHeight - joinRect.bottom)
+          const joinVisibleEnd = Math.max(0, windowHeight - joinRect.top)
+          const joinTotalVisible = Math.min(joinVisibleEnd, joinRect.height)
+          const joinVisiblePercentage = Math.max(0, Math.min(joinTotalVisible / joinRect.height, 1))
           
-          // Top-down reveal effect - reveal from top to bottom
-          const revealProgress = Math.min(visiblePercentage * 1.5, 1)
-          brainImage.style.clipPath = `inset(${100 - (revealProgress * 100)}% 0 0 0)`
+          // Smooth top-down reveal effect with easing
+          const revealProgress = Math.min(joinVisiblePercentage * 1.2, 1)
+          const easedProgress = revealProgress * revealProgress * (3 - 2 * revealProgress) // Smoothstep easing
           
-          // Scale up the image as it reveals
-          const scaleProgress = 1.8 + (revealProgress * 0.6) // Scale from 1.8 to 2.4
+          brainImage.style.clipPath = `inset(${100 - (easedProgress * 100)}% 0 0 0)`
+          
+          // Smoother scale transition
+          const scaleProgress = 1.8 + (easedProgress * 0.4) // Scale from 1.8 to 2.2
           brainImage.style.transform = `scale(${scaleProgress})`
           
-          // Color transition from white to purple
-          const hueRotate = revealProgress * 280 // 0 to 280 degrees (white to purple)
-          const brightness = 2 - (revealProgress * 1.5) // 2 to 0.5 (bright white to normal)
-          const saturation = revealProgress * 1.5 // 0 to 1.5 (desaturated to saturated)
-          brainImage.style.filter = `hue-rotate(${hueRotate}deg) brightness(${brightness}) saturate(${saturation})`
+          // Enhanced color transition with multiple steps
+          const hueRotate = easedProgress * 260 // 0 to 260 degrees (white to purple-blue)
+          const brightness = 1.5 - (easedProgress * 0.8) // 1.5 to 0.7 (bright to normal)
+          const saturation = 0.3 + (easedProgress * 1.2) // 0.3 to 1.5 (desaturated to saturated)
+          const contrast = 1.2 + (easedProgress * 0.3) // 1.2 to 1.5 (normal to enhanced)
           
-          // Transition overlay from dark to purple
-          const purpleIntensity = Math.min(visiblePercentage * 1.5, 1)
+          brainImage.style.filter = `hue-rotate(${hueRotate}deg) brightness(${brightness}) saturate(${saturation}) contrast(${contrast})`
+          brainImage.style.opacity = `${0.6 + (easedProgress * 0.3)}` // 0.6 to 0.9
+          
+          // Enhanced gradient overlay with smoother color transitions
+          const purpleIntensity = Math.min(easedProgress * 1.3, 1)
+          const blueIntensity = Math.min(easedProgress * 1.1, 1)
+          
           overlay.style.background = `linear-gradient(135deg, 
-            rgba(0,0,0,${0.8 - purpleIntensity * 0.3}) 0%, 
-            rgba(139,69,193,${0.3 + purpleIntensity * 0.4}) 100%)`
+            rgba(0,0,0,${0.85 - purpleIntensity * 0.2}) 0%, 
+            rgba(139,69,193,${0.4 + purpleIntensity * 0.3}) 50%, 
+            rgba(59,130,246,${0.3 + blueIntensity * 0.4}) 100%)`
         }
       }
 
@@ -273,7 +283,7 @@ export default function NeuroTechWebsite() {
                   height={32} 
                   className="w-8 h-8"
                 />
-                <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   Neurotech UofT
                 </span>
               </div>
@@ -295,7 +305,7 @@ export default function NeuroTechWebsite() {
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
               </div>
-              <Button className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105">
+              <Button className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
                 Contact
               </Button>
             </div>
@@ -341,7 +351,7 @@ export default function NeuroTechWebsite() {
             showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight text-white">
+          <h1 className="text-6xl md:text-8xl font-light mb-6 leading-tight text-white">
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
               Neurotech UofT
             </span>
@@ -377,21 +387,19 @@ export default function NeuroTechWebsite() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Text Content */}
             <div className="transform transition-all duration-1000 ease-out" data-animate="slideInLeft">
-              <div className="mb-4">
-                <span className="text-sm uppercase tracking-wider text-purple-400 font-medium">
-                  ABOUT US
-                </span>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 mt-2 transform origin-left transition-all duration-700 ease-out" data-animate="scaleX"></div>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-                Advancing Brain-Computer 
-                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  {" "}Interfaces from the Lab.
-                </span>
-              </h2>
-              
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+            <div className="mb-4">
+              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
+                ABOUT US
+              </span>
+              <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 mt-2 transform origin-left transition-all duration-700 ease-out" data-animate="scaleX"></div>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-light mb-6 text-white leading-tight">
+              Advancing Brain-Computer 
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                {" "}Interfaces from the Lab.
+              </span>
+            </h2>              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
                 With cutting-edge research in neural engineering, we can decode brain signals as complex 
                 as motor intentions and cognitive states, transmitting breakthrough discoveries to advance 
                 neurotechnology applications in real-time.
@@ -402,7 +410,7 @@ export default function NeuroTechWebsite() {
                 spans the entire spectrum of neural interface development.
               </p>
               
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
                 Learn More
               </Button>
             </div>
@@ -410,7 +418,7 @@ export default function NeuroTechWebsite() {
             {/* Right Column - Content */}
             <div className="space-y-8 transform transition-all duration-1000 ease-out" data-animate="slideInRight">
               <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-8 transform transition-all duration-700 ease-out hover:scale-105 hover:border-purple-500/30">
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-light text-white mb-4">
                   Innovation at the Intersection
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -421,14 +429,14 @@ export default function NeuroTechWebsite() {
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6 text-center transform transition-all duration-500 ease-out hover:scale-105 hover:border-purple-400/50">
-                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-3xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
                     50+
                   </div>
                   <p className="text-sm text-gray-400">Research Projects</p>
                 </div>
                 
                 <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6 text-center transform transition-all duration-500 ease-out hover:scale-105 hover:border-blue-400/50" style={{ transitionDelay: '0.2s' }}>
-                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-3xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
                     200+
                   </div>
                   <p className="text-sm text-gray-400">Active Members</p>
@@ -439,58 +447,310 @@ export default function NeuroTechWebsite() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-8 text-white">
-            NeuronMove
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed mb-12">
-            A groundbreaking initiative to combat Parkinson's disease tremors through cutting-edge bioprosthetics
-            and brain-wave technologies.
-          </p>
-          
-          <button className="text-purple-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wide">
-            Learn More →
-          </button>
+      {/* Upcoming Events Section */}
+      <section className="relative z-10 py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
+                WHAT'S HAPPENING
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-light text-white leading-tight mb-8">
+              Upcoming 
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Events
+              </span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Join us for exciting workshops, seminars, and networking events that push the boundaries of neurotechnology.
+            </p>
+          </div>
+
+          {/* Events Container with Navigation */}
+          <div className="relative">
+            {/* Left Arrow */}
+            <button 
+              onClick={() => {
+                const container = document.getElementById('events-container');
+                if (container) {
+                  container.scrollBy({ left: -400, behavior: 'smooth' });
+                }
+              }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-900/80 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-full p-3 transition-all duration-300 hover:scale-110"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-400 hover:text-purple-400" />
+            </button>
+
+            {/* Right Arrow */}
+            <button 
+              onClick={() => {
+                const container = document.getElementById('events-container');
+                if (container) {
+                  container.scrollBy({ left: 400, behavior: 'smooth' });
+                }
+              }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-900/80 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-full p-3 transition-all duration-300 hover:scale-110"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-400 hover:text-purple-400" />
+            </button>
+
+            {/* Scrollable Events Container */}
+            <div 
+              id="events-container"
+              className="flex overflow-x-auto scrollbar-hide gap-8 pb-6 px-16" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {/* Event Card 1 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
+                    Workshop
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    Mar 15, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  Brain-Computer Interface Fundamentals
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Learn the basics of BCI technology and explore hands-on applications in our state-of-the-art lab environment.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <MapPin className="w-4 h-4 mr-3" />
+                  Engineering Building
+                </div>
+              </div>
+
+              {/* Event Card 2 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
+                    Seminar
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    Mar 22, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  Neural Signal Processing in Action
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Deep dive into advanced signal processing techniques used in modern neurotechnology applications.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <Calendar className="w-4 h-4 mr-3" />
+                  6:00 PM - 8:00 PM
+                </div>
+              </div>
+
+              {/* Event Card 3 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
+                    Networking
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    Apr 5, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  Industry Connections Mixer
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Connect with industry professionals and explore career opportunities in neurotechnology.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <Users className="w-4 h-4 mr-3" />
+                  50+ Attendees
+                </div>
+              </div>
+
+              {/* Event Card 4 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
+                    Project Demo
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    Apr 12, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  NeuronMove Showcase
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  See our flagship project in action and learn about the latest developments in Parkinson's treatment.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <Microscope className="w-4 h-4 mr-3" />
+                  Live Demo
+                </div>
+              </div>
+
+              {/* Event Card 5 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
+                    Conference
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    Apr 20, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  Future of Neurotechnology Summit
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Annual conference featuring keynote speakers from leading neurotechnology companies and research institutions.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <ArrowRight className="w-4 h-4 mr-3" />
+                  All Day Event
+                </div>
+              </div>
+
+              {/* Event Card 6 */}
+              <div className="flex-none w-80 bg-gray-900/20 backdrop-blur-sm rounded-3xl border border-gray-700/30 p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
+                    Workshop
+                  </div>
+                  <div className="text-gray-400 text-sm font-light">
+                    May 3, 2024
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-white mb-4 leading-tight">
+                  Advanced Neural Interfaces
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Explore cutting-edge developments in neural interface technology and their clinical applications.
+                </p>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <MapPin className="w-4 h-4 mr-3" />
+                  Medical Sciences Building
+                </div>
+              </div>
+            </div>
+
+            {/* Gradient fade indicators */}
+            <div className="absolute left-16 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+            <div className="absolute right-16 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
+          </div>
         </div>
       </section>
 
-      {/* Partnerships Section */}
-      <section id="partnerships" className="relative z-10 py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-8 text-white">
-            Strategic Partnerships
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Through partnerships with top organizations, we spark conversations that make neurotechnology accessible and
-            impactful for undergraduates.
-          </p>
+      {/* Featured Projects Section */}
+      <section className="relative z-10 py-32 px-6 bg-gradient-to-b from-black via-gray-900/30 to-black">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 right-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="text-sm uppercase tracking-wider text-blue-400 font-light">
+                FEATURED PROJECTS
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-light text-white leading-tight mb-8">
+              Breakthrough 
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Research
+              </span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Discover our cutting-edge projects that are pushing the boundaries of neurotechnology and transforming lives.
+            </p>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column - 10,000x Flexibility */}
+            <div className="space-y-8">
+              <div className="border-l-4 border-purple-400 pl-8">
+                <h3 className="text-6xl md:text-7xl font-light text-white mb-4">
+                  10,000x
+                </h3>
+                <p className="text-lg text-gray-400 leading-relaxed">
+                  softer than today's flexible electronics
+                </p>
+              </div>
+              
+              {/* Hardware Image Placeholder */}
+              <div className="bg-gray-800/30 rounded-2xl p-8 border border-gray-700/30">
+                <div className="aspect-video bg-gray-700/50 rounded-lg flex items-center justify-center">
+                  <div className="text-center text-gray-500">
+                    <Microscope className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                    <p className="text-sm">Flexible Neural Interface Hardware</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - 1,000x Electrode Density */}
+            <div className="space-y-8">
+              <div className="border-l-4 border-blue-400 pl-8">
+                <h3 className="text-6xl md:text-7xl font-light text-white mb-4">
+                  1,000x
+                </h3>
+                <p className="text-lg text-gray-400 leading-relaxed">
+                  greater electrode density than soft probes on the market
+                </p>
+              </div>
+              
+              {/* Electrode Array Image Placeholder */}
+              <div className="bg-gray-800/30 rounded-2xl p-8 border border-gray-700/30">
+                <div className="aspect-video bg-gray-700/50 rounded-lg flex items-center justify-center">
+                  <div className="text-center text-gray-500">
+                    <Zap className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                    <p className="text-sm">Ultra-Dense Electrode Array</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to action */}
+          <div className="text-center mt-16">
+            <button className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 text-blue-300 hover:text-white border border-blue-500/30 hover:border-blue-400 px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105">
+              Explore All Projects →
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Join Us and Footer Container with Brain Circuit Background */}
       <div className="relative">
+        {/* Gradient transition from previous section */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
+        
         {/* Background Image with Top-Down Reveal Effect */}
         <div className="fixed inset-0 z-0">
           {/* Single Brain Image */}
           <div 
             id="brain-image"
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1500 ease-out"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-2000 ease-out"
             style={{ 
               backgroundImage: 'url(/brain-wallpaper.jpg)',
               clipPath: 'inset(100% 0 0 0)',
               transform: 'scale(1.8)',
-              filter: 'hue-rotate(0deg) brightness(2) saturate(0)'
+              filter: 'hue-rotate(0deg) brightness(1.5) saturate(0.3) contrast(1.2)',
+              opacity: '0.6'
             }}
           />
           <div 
             id="brain-overlay"
-            className="absolute inset-0 transition-all duration-1000 ease-out"
+            className="absolute inset-0 transition-all duration-1500 ease-out"
             style={{ 
-              background: 'linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(139,69,193,0.3) 100%)'
+              background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(139,69,193,0.4) 50%, rgba(59,130,246,0.3) 100%)'
             }}
           />
+          {/* Additional overlay for smoother blending */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40"></div>
         </div>
 
         {/* Join Us Section */}
@@ -525,7 +785,7 @@ export default function NeuroTechWebsite() {
                 height={24} 
                 className="w-6 h-6"
               />
-              <span className="text-lg font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Neurotech UofT
               </span>
             </div>
