@@ -331,6 +331,10 @@ export default function NeuroTechWebsite() {
             muted
             playsInline
             onEnded={handleVideoEnd}
+            onLoadedData={(e) => {
+              const video = e.target as HTMLVideoElement;
+              video.currentTime = 0.7;
+            }}
             className={`w-full h-full object-cover transition-all duration-1000 ${
               videoEnded ? "opacity-40" : "opacity-100"
             }`}
@@ -791,7 +795,7 @@ export default function NeuroTechWebsite() {
             </div>
 
             <p className="text-gray-500 text-sm">
-              &copy; 2024 Neurotech UofT. Pioneering the future of neurotechnology.
+              &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
             </p>
           </div>
         </footer>
