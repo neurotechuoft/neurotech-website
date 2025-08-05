@@ -212,23 +212,26 @@ export default function NeuroTechWebsite() {
               </div>
               <div className="hidden md:flex items-center space-x-8">
                 <a href="#about" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
-                  About
+                  About Us
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="#projects" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
+                <a href="/projects" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
                   Projects
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="#partnerships" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
-                  Partnerships
+                <a href="/contact" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
+                  Contact Us
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="#join" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
-                  Join Us
+                <a href="/community" className="text-white/80 hover:text-purple-400 transition-all duration-300 relative group">
+                  Community
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
               </div>
-              <Button className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
+              <Button 
+                onClick={() => window.location.href = '/contact'}
+                className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light"
+              >
                 Contact
               </Button>
             </div>
@@ -327,14 +330,11 @@ export default function NeuroTechWebsite() {
                 {" "}Interfaces from the Lab.
               </span>
             </h2>              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                With cutting-edge research in neural engineering, we can decode brain signals as complex 
-                as motor intentions and cognitive states, transmitting breakthrough discoveries to advance 
-                neurotechnology applications in real-time.
+At Neurotech UofT, we are pioneering innovation in neurotechnology by merging engineering and neuroscience to create meaningful change.Through partnerships with top organizations, we spark conversations that make neurotechnology accessible and impactful for undergraduates.
               </p>
               
               <p className="text-base text-gray-400 mb-8 leading-relaxed">
-                From 5-microvolt signals in the lab to 50-millivolt applications in the field, our research 
-                spans the entire spectrum of neural interface development.
+                Join us as we shape the future of neurotechnology with passion, collaboration, and innovation at UofT Engineering.
               </p>
               
               <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
@@ -349,8 +349,7 @@ export default function NeuroTechWebsite() {
                   Innovation at the Intersection
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  We bridge the gap between cutting-edge engineering and neuroscience, creating solutions that transform
-                  lives and push the boundaries of what&apos;s possible in brain-computer interface technology.
+Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parkinson&apos;s disease tremors through cutting-edge bioprosthetics and brain-wave technologies.
                 </p>
               </div>
               
