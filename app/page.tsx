@@ -1,84 +1,9 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Brain, Zap, Users, Microscope, ArrowRight, Github, Mail, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
-
-function FullPageParallax() {
-  const sectionRef = useRef<HTMLDivElement | null>(null)
-  const bgRef = useRef<HTMLDivElement | null>(null)
-  const fgRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!sectionRef.current || !bgRef.current || !fgRef.current) return
-      const rect = sectionRef.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const progress = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1)
-
-      bgRef.current.style.transform = `translateY(${(progress * 30).toFixed(2)}px)`
-      fgRef.current.style.transform = `translateY(${(-progress * 60).toFixed(2)}px)`
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  return (
-    <section
-      id="parallaxPage"
-      ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden"
-    >
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div
-          ref={bgRef}
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at center, rgba(20,30,60,0.6) 0%, rgba(10,10,30,1) 80%)", filter: "blur(40px)" }}
-        />
-        <div className="relative z-10 max-w-4xl text-center px-6">
-          <h2 className="text-6xl font-light mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Deep Motion
-            </span>
-          </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            Scroll to reveal connections. Layers shift independently to give depth and meaning.
-          </p>
-          <div
-            ref={fgRef}
-            className="mx-auto w-full flex justify-center gap-8 flex-wrap"
-          >
-            <div className="p-6 bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 w-60">
-              <Image 
-                src="/logo.png" 
-                alt="Neural signal layers" 
-                width={40} 
-                height={40} 
-                className="w-10 h-10 mx-auto mb-2"
-              />
-              <p className="text-center text-sm">Neural signal layers</p>
-            </div>
-            <div className="p-6 bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 w-60">
-              <Zap className="w-10 h-10 text-purple-300 mb-2 mx-auto" />
-              <p className="text-center text-sm">Dynamic modulation</p>
-            </div>
-            <div className="p-6 bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 w-60">
-              <Users className="w-10 h-10 text-pink-300 mb-2 mx-auto" />
-              <p className="text-center text-sm">Collaborative layers</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* spacer so scrolling consumes full height */}
-      <div className="absolute bottom-0 w-full h-[200vh]" aria-hidden="true" />
-    </section>
-  )
-}
+import { Zap, Users, Microscope, ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function NeuroTechWebsite() {
   const [videoEnded, setVideoEnded] = useState(false)
@@ -152,11 +77,9 @@ export default function NeuroTechWebsite() {
         
         if (footerSection && joinSection && overlay && brainImage) {
           const joinRect = joinSection.getBoundingClientRect()
-          const footerRect = footerSection.getBoundingClientRect()
           const windowHeight = window.innerHeight
           
           // Calculate visibility based on join section
-          const joinVisibleStart = Math.max(0, windowHeight - joinRect.bottom)
           const joinVisibleEnd = Math.max(0, windowHeight - joinRect.top)
           const joinTotalVisible = Math.min(joinVisibleEnd, joinRect.height)
           const joinVisiblePercentage = Math.max(0, Math.min(joinTotalVisible / joinRect.height, 1))
@@ -427,7 +350,7 @@ export default function NeuroTechWebsite() {
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
                   We bridge the gap between cutting-edge engineering and neuroscience, creating solutions that transform
-                  lives and push the boundaries of what's possible in brain-computer interface technology.
+                  lives and push the boundaries of what&apos;s possible in brain-computer interface technology.
                 </p>
               </div>
               
@@ -457,7 +380,7 @@ export default function NeuroTechWebsite() {
           <div className="text-center mb-20">
             <div className="mb-6">
               <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
-                WHAT'S HAPPENING
+                WHAT&apos;S HAPPENING
               </span>
             </div>
             <h2 className="text-5xl md:text-6xl font-light text-white leading-tight mb-8">
@@ -585,7 +508,7 @@ export default function NeuroTechWebsite() {
                   NeuronMove Showcase
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  See our flagship project in action and learn about the latest developments in Parkinson's treatment.
+                  See our flagship project in action and learn about the latest developments in Parkinson&apos;s treatment.
                 </p>
                 <div className="flex items-center text-gray-400 text-sm">
                   <Microscope className="w-4 h-4 mr-3" />
@@ -680,7 +603,7 @@ export default function NeuroTechWebsite() {
                   10,000x
                 </h3>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                  softer than today's flexible electronics
+                  softer than today&apos;s flexible electronics
                 </p>
               </div>
               

@@ -36,7 +36,6 @@ export default function SpringParallaxSection() {
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isInSection, setIsInSection] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
 
   const sections: Section[] = [
     {
@@ -91,7 +90,6 @@ export default function SpringParallaxSection() {
         const progress = sectionProgress / sections.length
         
         setCurrentSection(Math.min(currentSectionIndex, sections.length - 1))
-        setScrollProgress(progress)
         setIsInSection(true)
         
         // Calculate horizontal translation
@@ -126,7 +124,6 @@ export default function SpringParallaxSection() {
         // Reset transform when not in section
         scrollRef.current.style.transform = `translateX(0px)`
         setCurrentSection(0)
-        setScrollProgress(0)
       }
     }
 

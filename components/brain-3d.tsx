@@ -1,14 +1,13 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { Canvas, useFrame } from "@react-three/fiber"
 import { Sphere, MeshDistortMaterial, Environment } from "@react-three/drei"
 import type * as THREE from "three"
 
 function Brain3DModel({ mousePosition }: { mousePosition: { x: number; y: number } }) {
   const meshRef = useRef<THREE.Mesh>(null)
   const [hovered, setHovered] = useState(false)
-  const { viewport } = useThree()
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -124,7 +123,10 @@ function SynapticParticles() {
   return (
     <points ref={particlesRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={particleCount} array={positions} itemSize={3} />
+        <bufferAttribute 
+          attach="attributes-position" 
+          args={[positions, 3]}
+        />
       </bufferGeometry>
       <pointsMaterial size={0.02} color="#06b6d4" transparent opacity={0.6} />
     </points>

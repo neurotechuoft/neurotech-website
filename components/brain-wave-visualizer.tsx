@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 export function BrainWaveVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isActive, setIsActive] = useState(false)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
