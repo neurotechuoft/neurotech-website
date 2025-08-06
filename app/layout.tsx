@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Neurotech UofT",
+  title: "NeurotechUofT",
   description: "The next generation of neurotechnology and neuroscience enthusiasts",
 };
 

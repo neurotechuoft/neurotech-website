@@ -45,13 +45,13 @@ export default function ContactPage() {
               <div className="flex items-center space-x-2">
                 <Image 
                   src="/logo.png" 
-                  alt="Neurotech UofT Logo" 
+                  alt="NeurotechUofT Logo" 
                   width={32} 
                   height={32} 
                   className="w-8 h-8"
                 />
                 <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Neurotech UofT
+                  NeurotechUofT
                 </span>
               </div>
             </div>
@@ -269,7 +269,7 @@ export default function ContactPage() {
 
           <div className="space-y-6">
             <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6">
-              <h3 className="text-lg font-light text-white mb-3">How can I join Neurotech UofT?</h3>
+              <h3 className="text-lg font-light text-white mb-3">How can I join NeurotechUofT?</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 We welcome students from all backgrounds! Check out our community page for upcoming recruitment events and application processes.
               </p>
@@ -298,17 +298,17 @@ export default function ContactPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="Neurotech UofT Logo" 
+              alt="NeurotechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Neurotech UofT
+              NeurotechUofT
             </span>
           </div>
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeurotechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>
       </footer>

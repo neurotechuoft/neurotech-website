@@ -125,13 +125,13 @@ export default function CommunityPage() {
               <div className="flex items-center space-x-2">
                 <Image 
                   src="/logo.png" 
-                  alt="Neurotech UofT Logo" 
+                  alt="NeurotechUofT Logo" 
                   width={32} 
                   height={32} 
                   className="w-8 h-8"
                 />
                 <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Neurotech UofT
+                  NeurotechUofT
                 </span>
               </div>
             </div>
@@ -254,7 +254,7 @@ export default function CommunityPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  Neurotech UofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for neurotechnology.
+                  NeurotechUofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for neurotechnology.
                 </p>
                 <p className="text-gray-400 mb-8 leading-relaxed">
                   Our community is built on principles of collaboration, innovation, and inclusivity. We believe that the future of neurotechnology lies in interdisciplinary approaches and diverse perspectives.
@@ -279,7 +279,7 @@ export default function CommunityPage() {
                 <div className="space-y-6">
                   <blockquote className="border-l-4 border-purple-400 pl-6">
                     <p className="text-gray-300 italic mb-2">
-                      &quot;Joining Neurotech UofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
+                      &quot;Joining NeurotechUofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
                     </p>
                     <cite className="text-purple-400 text-sm">- Maria S., 3rd Year Computer Science</cite>
                   </blockquote>
@@ -424,17 +424,17 @@ export default function CommunityPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="Neurotech UofT Logo" 
+              alt="NeurotechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Neurotech UofT
+              NeurotechUofT
             </span>
           </div>
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeurotechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>
       </footer>

@@ -48,7 +48,7 @@ export default function ProjectsPage() {
     {
       id: 4,
       title: "WallEEG",
-      description: "A mind-controlled quidditch robot developed as part of Neurotech UofT's interdisciplinary approach to neurotechnology.",
+      description: "A mind-controlled quidditch robot developed as part of NeurotechUofT's interdisciplinary approach to neurotechnology.",
       category: "ai",
       status: "active",
       image: "/project-walleeg.jpg",
@@ -108,13 +108,13 @@ export default function ProjectsPage() {
               <div className="flex items-center space-x-2">
                 <Image 
                   src="/logo.png" 
-                  alt="Neurotech UofT Logo" 
+                  alt="NeurotechUofT Logo" 
                   width={32} 
                   height={32} 
                   className="w-8 h-8"
                 />
                 <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Neurotech UofT
+                  NeurotechUofT
                 </span>
               </div>
             </div>
@@ -285,17 +285,17 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="Neurotech UofT Logo" 
+              alt="NeurotechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Neurotech UofT
+              NeurotechUofT
             </span>
           </div>
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeurotechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>
       </footer>
