@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ExternalLink, Github, Zap, Brain, Activity, Users } from "lucide-react"
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -48,7 +49,7 @@ export default function ProjectsPage() {
     {
       id: 4,
       title: "WallEEG",
-      description: "A mind-controlled quidditch robot developed as part of Neurotech UofT's interdisciplinary approach to neurotechnology.",
+  description: "A mind-controlled quidditch robot developed as part of NeuroTechUofT's interdisciplinary approach to neurotechnology.",
       category: "ai",
       status: "active",
       image: "/project-walleeg.jpg",
@@ -92,7 +93,7 @@ export default function ProjectsPage() {
     : projects.filter(project => project.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed inset-x-0 top-0 z-50 bg-black/10 backdrop-blur-sm border-b border-gray-800/50">
         <div className="w-full px-6 py-4">
@@ -108,13 +109,13 @@ export default function ProjectsPage() {
               <div className="flex items-center space-x-2">
                 <Image 
                   src="/logo.png" 
-                  alt="Neurotech UofT Logo" 
+                  alt="NeuroTechUofT Logo" 
                   width={32} 
                   height={32} 
                   className="w-8 h-8"
                 />
                 <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Neurotech UofT
+                  NeuroTechUofT
                 </span>
               </div>
             </div>
@@ -128,9 +129,8 @@ export default function ProjectsPage() {
               <Link href="/contact" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
                 Contact Us
               </Link>
-              <Link href="/community" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
-                Community
-              </Link>
+              <Link href="/about" className="text-white/80 hover:text-purple-400 transition-colors duration-300">About</Link>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -269,11 +269,11 @@ export default function ProjectsPage() {
               Get Involved
             </Button>
             <Button 
-              onClick={() => window.location.href = '/community'}
+              onClick={() => window.location.href = '/about'}
               variant="outline" 
               className="border-purple-400/50 text-purple-300 hover:bg-purple-600/20 px-8 py-3"
             >
-              Join Community
+              Learn About Us
             </Button>
           </div>
         </div>
@@ -285,17 +285,17 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="Neurotech UofT Logo" 
+              alt="NeuroTechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Neurotech UofT
+              NeuroTechUofT
             </span>
           </div>
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>
       </footer>

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Users, Calendar, MessageCircle, Award, BookOpen, Heart, Coffee, Code, Brain } from "lucide-react"
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function CommunityPage() {
   const [activeTab, setActiveTab] = useState("overview")
@@ -109,7 +110,7 @@ export default function CommunityPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white">
+  <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed inset-x-0 top-0 z-50 bg-black/10 backdrop-blur-sm border-b border-gray-800/50">
         <div className="w-full px-6 py-4">
@@ -125,13 +126,13 @@ export default function CommunityPage() {
               <div className="flex items-center space-x-2">
                 <Image 
                   src="/logo.png" 
-                  alt="Neurotech UofT Logo" 
+                  alt="NeuroTechUofT Logo" 
                   width={32} 
                   height={32} 
                   className="w-8 h-8"
                 />
                 <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Neurotech UofT
+                  NeuroTechUofT
                 </span>
               </div>
             </div>
@@ -148,6 +149,7 @@ export default function CommunityPage() {
               <a href="/community" className="text-purple-400">
                 Community
               </a>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -172,12 +174,7 @@ export default function CommunityPage() {
             >
               Join Us Today
             </Button>
-            <Button 
-              variant="outline" 
-              className="border-purple-400/50 text-purple-300 hover:bg-purple-600/20 px-8 py-3"
-            >
-              Learn More
-            </Button>
+            <a href="/about" className="border border-purple-400/50 text-purple-300 hover:bg-purple-600/20 px-8 py-3 rounded-md text-center">Learn More</a>
           </div>
         </div>
       </section>
@@ -218,9 +215,8 @@ export default function CommunityPage() {
       <section className="py-8 px-6 border-b border-gray-800/50">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-center space-x-8">
-            {[
+            {[ 
               { id: "overview", label: "Overview" },
-              { id: "team", label: "Leadership Team" },
               { id: "events", label: "Events & Activities" },
               { id: "benefits", label: "Member Benefits" }
             ].map((tab) => (
@@ -236,6 +232,7 @@ export default function CommunityPage() {
                 {tab.label}
               </button>
             ))}
+            <a href="/about/leadership" className="pb-2 px-4 text-sm font-light text-gray-400 hover:text-purple-300 border-b-2 border-transparent transition-all">Leadership Team →</a>
           </div>
         </div>
       </section>
@@ -254,7 +251,7 @@ export default function CommunityPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  Neurotech UofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for neurotechnology.
+                  NeuroTechUofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for neurotechnology.
                 </p>
                 <p className="text-gray-400 mb-8 leading-relaxed">
                   Our community is built on principles of collaboration, innovation, and inclusivity. We believe that the future of neurotechnology lies in interdisciplinary approaches and diverse perspectives.
@@ -279,7 +276,7 @@ export default function CommunityPage() {
                 <div className="space-y-6">
                   <blockquote className="border-l-4 border-purple-400 pl-6">
                     <p className="text-gray-300 italic mb-2">
-                      &quot;Joining Neurotech UofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
+                      &quot;Joining NeuroTechUofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
                     </p>
                     <cite className="text-purple-400 text-sm">- Maria S., 3rd Year Computer Science</cite>
                   </blockquote>
@@ -424,17 +421,17 @@ export default function CommunityPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="Neurotech UofT Logo" 
+              alt="NeuroTechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Neurotech UofT
+              NeuroTechUofT
             </span>
           </div>
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neurotech UofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>
       </footer>
