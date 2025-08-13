@@ -3,9 +3,9 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ExternalLink, Github, Zap, Brain, Activity, Users } from "lucide-react"
+import { ExternalLink, Github, Zap, Brain, Activity, Users } from "lucide-react"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+import TopNav from "@/components/top-nav"
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -94,60 +94,33 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed inset-x-0 top-0 z-50 bg-black/10 backdrop-blur-sm border-b border-gray-800/50">
-        <div className="w-full px-6 py-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Button 
-                onClick={() => window.location.href = '/'}
-                variant="ghost"
-                className="text-white/80 hover:text-white p-2"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </Button>
-              <div className="flex items-center space-x-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="NeuroTechUofT Logo" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8"
-                />
-                <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  NeuroTechUofT
-                </span>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#about" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
-                About Us
-              </Link>
-              <a href="/projects" className="text-purple-400">
-                Projects
-              </a>
-              <Link href="/contact" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
-                Contact Us
-              </Link>
-              <Link href="/about" className="text-white/80 hover:text-purple-400 transition-colors duration-300">About</Link>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </nav>
+  <TopNav />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-black via-gray-900/30 to-black">
+    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-background via-muted/40 to-background">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-light mb-6 text-white leading-tight">
+      <h1 className="text-5xl md:text-7xl font-light mb-6 text-foreground leading-tight">
             Our 
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+      <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12">
             Explore our cutting-edge research projects that are advancing the frontier of neurotechnology and brain-computer interfaces.
           </p>
+          {/* R&D Tabs */}
+      <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { href: '/projects/neuronmove', label: 'NeuronMove' },
+              { href: '/projects/stroke-rehab', label: 'Stroke Rehab' },
+              { href: '/projects/history', label: 'History' },
+              { href: '/projects/past', label: 'Past Projects' },
+            ].map((t) => (
+              <Link key={t.href} href={t.href} className="px-4 py-2 rounded-full border border-border bg-card text-foreground hover:border-purple-500/50 hover:text-purple-500 transition">
+                {t.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -158,13 +131,13 @@ export default function ProjectsPage() {
             {categories.map((category) => {
               const IconComponent = category.icon
               return (
-                <button
+        <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
                   className={`flex items-center space-x-2 px-6 py-3 rounded-full border transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-purple-600/20 border-purple-400 text-purple-300'
-                      : 'bg-gray-900/20 border-gray-700 text-gray-400 hover:border-purple-400/50 hover:text-purple-300'
+          ? 'bg-purple-600/10 border-purple-400 text-purple-500'
+          : 'bg-card border-border text-muted-foreground hover:border-purple-400/50 hover:text-purple-500'
                   }`}
                 >
                   <IconComponent className="w-4 h-4" />
@@ -179,10 +152,10 @@ export default function ProjectsPage() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className={`bg-gray-900/20 backdrop-blur-sm rounded-2xl border p-6 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 group ${
+                className={`bg-card rounded-2xl border p-6 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 group ${
                   project.flagship 
                     ? 'border-yellow-500/30 bg-gradient-to-br from-yellow-500/5 to-purple-500/5' 
-                    : 'border-gray-700/30'
+                    : 'border-border'
                 }`}
               >
                 {/* Flagship Badge */}
@@ -195,8 +168,8 @@ export default function ProjectsPage() {
                 )}
 
                 {/* Project Image Placeholder */}
-                <div className="aspect-video bg-gray-700/50 rounded-lg mb-6 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
+                <div className="aspect-video bg-muted/50 rounded-lg mb-6 flex items-center justify-center">
+                  <div className="text-center text-muted-foreground">
                     <Brain className="w-12 h-12 mx-auto mb-2 opacity-50" />
                     <p className="text-xs">{project.title}</p>
                   </div>
@@ -222,10 +195,10 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Project Content */}
-                <h3 className="text-xl font-light text-white mb-3 group-hover:text-purple-300 transition-colors">
+                <h3 className="text-xl font-light text-foreground mb-3 group-hover:text-purple-500 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
 
@@ -234,7 +207,7 @@ export default function ProjectsPage() {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-gray-800/50 text-gray-300 text-xs rounded border border-gray-700/50"
+                      className="px-2 py-1 bg-muted/50 text-foreground/80 text-xs rounded border border-border/60"
                     >
                       {tech}
                     </span>
@@ -242,7 +215,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Project Stats */}
-                <div className="flex justify-between text-xs text-gray-500">
+                <div className="flex justify-between text-xs text-muted-foreground">
                   <span>{project.team}</span>
                   <span>{project.duration}</span>
                 </div>
@@ -253,12 +226,12 @@ export default function ProjectsPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-6">
+    <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-6 text-white">
+      <h2 className="text-3xl md:text-4xl font-light mb-6 text-foreground">
             Want to Contribute?
           </h2>
-          <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+      <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
             Join our team and help build the future of neurotechnology. We&apos;re always looking for passionate students and researchers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -271,7 +244,7 @@ export default function ProjectsPage() {
             <Button 
               onClick={() => window.location.href = '/about'}
               variant="outline" 
-              className="border-purple-400/50 text-purple-300 hover:bg-purple-600/20 px-8 py-3"
+        className="border-purple-400/50 text-purple-500 hover:bg-purple-600/10 px-8 py-3"
             >
               Learn About Us
             </Button>
@@ -280,7 +253,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-gray-800/50">
+    <footer className="py-16 px-6 border-t border-border">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
@@ -294,7 +267,7 @@ export default function ProjectsPage() {
               NeuroTechUofT
             </span>
           </div>
-          <p className="text-gray-500 text-sm">
+      <p className="text-muted-foreground text-sm">
             &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>

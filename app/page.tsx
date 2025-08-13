@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Zap, Users, Microscope, ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Zap, Microscope } from "lucide-react"
+import Link from "next/link"
+import TopNav from "@/components/top-nav"
+import HeroSlideshow from "@/components/hero-slideshow"
+import { getUpcomingEvents } from "@/lib/events"
 
 export default function NeuroTechWebsite() {
-  const [videoEnded, setVideoEnded] = useState(false)
-  const [showText, setShowText] = useState(false)
+  // Reveal hero text and show nav immediately (no intro lock)
+  const [showText] = useState(true)
 
   useEffect(() => {
     // Force scroll to top on page load/reload
@@ -23,126 +25,53 @@ export default function NeuroTechWebsite() {
       document.body.scrollTop = 0
     }, 100)
 
-    // Prefer reduced motion or mobile: skip intro autoplay which can stall
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-    if (reduceMotion || isMobile) {
-      setVideoEnded(true)
-      setShowText(true)
-    }
-
     return () => clearTimeout(timer)
   }, [])
-
-  const handleVideoEnd = () => {
-    setVideoEnded(true)
-    setTimeout(() => {
-      setShowText(true)
-    }, 500)
-  }
-
-  // Prevent scrolling until video ends
+  // Brain-image overlay effect (previously gated by intro); run always
   useEffect(() => {
-  if (!videoEnded) {
-      // Disable scrolling
-      document.body.style.overflow = 'hidden'
-      
-      // Prevent wheel events
-      const preventScroll = (e: WheelEvent) => {
-        e.preventDefault()
-      }
-      
-      // Prevent touch scroll on mobile
-      const preventTouchMove = (e: TouchEvent) => {
-        e.preventDefault()
-      }
-      
-      // Prevent arrow key scrolling
-      const preventKeyScroll = (e: KeyboardEvent) => {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
-          e.preventDefault()
-        }
-      }
-
-      window.addEventListener('wheel', preventScroll, { passive: false })
-      // Avoid preventing touchmove on mobile to reduce jank/freezes
-      const isMobile = window.matchMedia('(max-width: 768px)').matches
-      if (!isMobile) {
-        window.addEventListener('touchmove', preventTouchMove, { passive: false })
-      }
-      window.addEventListener('keydown', preventKeyScroll)
-
-      return () => {
-        document.body.style.overflow = 'unset'
-  window.removeEventListener('wheel', preventScroll)
-  window.removeEventListener('touchmove', preventTouchMove)
-        window.removeEventListener('keydown', preventKeyScroll)
-      }
-    } else {
-      // Re-enable scrolling and add brain circuit color transition
-      document.body.style.overflow = 'unset'
-      
-      const handleBrainOverlay = () => {
-        const footerSection = document.querySelector('footer')
-        const joinSection = document.getElementById('join')
-        const overlay = document.getElementById('brain-overlay')
-        const brainImage = document.getElementById('brain-image')
-        
-        if (footerSection && joinSection && overlay && brainImage) {
-          const joinRect = joinSection.getBoundingClientRect()
-          const windowHeight = window.innerHeight
-          
-          // Calculate visibility based on join section
-          const joinVisibleEnd = Math.max(0, windowHeight - joinRect.top)
-          const joinTotalVisible = Math.min(joinVisibleEnd, joinRect.height)
-          const joinVisiblePercentage = Math.max(0, Math.min(joinTotalVisible / joinRect.height, 1))
-          
-          // Smooth top-down reveal effect with easing
-          const revealProgress = Math.min(joinVisiblePercentage * 1.2, 1)
-          const easedProgress = revealProgress * revealProgress * (3 - 2 * revealProgress) // Smoothstep easing
-          
-          brainImage.style.clipPath = `inset(${100 - (easedProgress * 100)}% 0 0 0)`
-          
-          // Smoother scale transition
-          const scaleProgress = 1.8 + (easedProgress * 0.4) // Scale from 1.8 to 2.2
-          brainImage.style.transform = `scale(${scaleProgress})`
-          
-          // Enhanced color transition with multiple steps
-          const hueRotate = easedProgress * 260 // 0 to 260 degrees (white to purple-blue)
-          const brightness = 1.5 - (easedProgress * 0.8) // 1.5 to 0.7 (bright to normal)
-          const saturation = 0.3 + (easedProgress * 1.2) // 0.3 to 1.5 (desaturated to saturated)
-          const contrast = 1.2 + (easedProgress * 0.3) // 1.2 to 1.5 (normal to enhanced)
-          
-          brainImage.style.filter = `hue-rotate(${hueRotate}deg) brightness(${brightness}) saturate(${saturation}) contrast(${contrast})`
-          brainImage.style.opacity = `${0.6 + (easedProgress * 0.3)}` // 0.6 to 0.9
-          
-          // Enhanced gradient overlay with smoother color transitions and theme awareness
-          const purpleIntensity = Math.min(easedProgress * 1.3, 1)
-          const blueIntensity = Math.min(easedProgress * 1.1, 1)
-          const isDarkTheme = document.documentElement.classList.contains('dark')
-          const baseAlpha = isDarkTheme ? (0.75 - purpleIntensity * 0.18) : (0.25 - purpleIntensity * 0.08)
-          const purpleAlpha = isDarkTheme ? (0.38 + purpleIntensity * 0.28) : (0.22 + purpleIntensity * 0.18)
-          const blueAlpha = isDarkTheme ? (0.28 + blueIntensity * 0.36) : (0.18 + blueIntensity * 0.22)
-
-          overlay.style.background = `linear-gradient(135deg,
-            rgba(0,0,0,${Math.max(0, baseAlpha)}) 0%,
-            rgba(139,69,193,${Math.min(1, purpleAlpha)}) 50%,
-            rgba(59,130,246,${Math.min(1, blueAlpha)}) 100%)`
-        }
-      }
-
-      const isMobile = window.matchMedia('(max-width: 768px)').matches
-      if (!isMobile) {
-        window.addEventListener('scroll', handleBrainOverlay, { passive: true })
-      }
-      // Initial call to set correct overlay state
-      if (!isMobile) handleBrainOverlay()
-
-      return () => {
-  window.removeEventListener('scroll', handleBrainOverlay)
+    const handleBrainOverlay = () => {
+      const footerSection = document.querySelector('footer')
+      const joinSection = document.getElementById('join')
+      const overlay = document.getElementById('brain-overlay')
+      const brainImage = document.getElementById('brain-image')
+      if (footerSection && joinSection && overlay && brainImage) {
+        const joinRect = joinSection.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        const joinVisibleEnd = Math.max(0, windowHeight - joinRect.top)
+        const joinTotalVisible = Math.min(joinVisibleEnd, joinRect.height)
+        const joinVisiblePercentage = Math.max(0, Math.min(joinTotalVisible / joinRect.height, 1))
+        const revealProgress = Math.min(joinVisiblePercentage * 1.2, 1)
+        const easedProgress = revealProgress * revealProgress * (3 - 2 * revealProgress)
+        ;(brainImage as HTMLElement).style.clipPath = `inset(${100 - (easedProgress * 100)}% 0 0 0)`
+        const scaleProgress = 1.8 + (easedProgress * 0.4)
+        ;(brainImage as HTMLElement).style.transform = `scale(${scaleProgress})`
+        const hueRotate = easedProgress * 260
+        const brightness = 1.5 - (easedProgress * 0.8)
+        const saturation = 0.3 + (easedProgress * 1.2)
+        const contrast = 1.2 + (easedProgress * 0.3)
+        ;(brainImage as HTMLElement).style.filter = `hue-rotate(${hueRotate}deg) brightness(${brightness}) saturate(${saturation}) contrast(${contrast})`
+        ;(brainImage as HTMLElement).style.opacity = `${0.6 + (easedProgress * 0.3)}`
+        const isDarkTheme = document.documentElement.classList.contains('dark')
+        const purpleIntensity = Math.min(easedProgress * 1.3, 1)
+        const blueIntensity = Math.min(easedProgress * 1.1, 1)
+        const baseAlpha = isDarkTheme ? (0.75 - purpleIntensity * 0.18) : (0.25 - purpleIntensity * 0.08)
+        const purpleAlpha = isDarkTheme ? (0.38 + purpleIntensity * 0.28) : (0.22 + purpleIntensity * 0.18)
+        const blueAlpha = isDarkTheme ? (0.28 + blueIntensity * 0.36) : (0.18 + blueIntensity * 0.22)
+        ;(overlay as HTMLElement).style.background = `linear-gradient(135deg,
+          rgba(0,0,0,${Math.max(0, baseAlpha)}) 0%,
+          rgba(139,69,193,${Math.min(1, purpleAlpha)}) 50%,
+          rgba(59,130,246,${Math.min(1, blueAlpha)}) 100%)`
       }
     }
-  }, [videoEnded])
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    if (!isMobile) {
+      window.addEventListener('scroll', handleBrainOverlay, { passive: true })
+      handleBrainOverlay()
+    }
+    return () => {
+      window.removeEventListener('scroll', handleBrainOverlay)
+    }
+  }, [])
 
   // Scroll animations for About section
   useEffect(() => {
@@ -227,89 +156,19 @@ export default function NeuroTechWebsite() {
   return (
   <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      {showText && (
-        <nav className="fixed inset-x-0 top-0 z-50 animate-in fade-in duration-1000">
-          <div className="w-full bg-background/70 backdrop-blur-sm border-b border-border px-6 py-4">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="NeuroTechUofT Logo" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8"
-                />
-                <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  NeuroTechUofT
-                </span>
-              </div>
-              <div className="hidden md:flex items-center space-x-8">
-                <a href="#about" className="text-foreground/80 hover:text-purple-500 transition-all duration-300 relative group">
-                  About Us
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </a>
-                <a href="/projects" className="text-foreground/80 hover:text-purple-500 transition-all duration-300 relative group">
-                  Projects
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </a>
-                <a href="/contact" className="text-foreground/80 hover:text-purple-500 transition-all duration-300 relative group">
-                  Contact Us
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </a>
-                <a href="/community" className="text-foreground/80 hover:text-purple-500 transition-all duration-300 relative group">
-                  Community
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </a>
-              </div>
-              <div className="hidden md:flex items-center gap-2">
-                <ThemeToggle />
-                <Button 
-                onClick={() => window.location.href = '/contact'}
-                className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light"
-              >
-                Contact
-              </Button>
-              </div>
-              <div className="md:hidden">
-                <ThemeToggle />
-              </div>
-            </div>
-          </div>
-        </nav>
-      )}
-      {/* Hero Section with Video Background */}
+  {showText && <TopNav />}
+      {/* Hero Section with slideshow */}
   <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
-        {/* Skip Button - only visible during video */}
-        {!videoEnded && (
-          <button
-            onClick={handleVideoEnd}
-            className="fixed top-6 right-6 z-50 bg-black/30 hover:bg-black/50 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300"
-          >
-            Skip Video
-          </button>
-        )}
-
-        {/* Video Background */}
+        {/* Background slideshow */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <video
-            autoPlay
-            muted
-            playsInline
-            onEnded={handleVideoEnd}
-            onLoadedData={(e) => {
-              const video = e.target as HTMLVideoElement;
-              video.currentTime = 0.7;
-            }}
-            className={`w-full h-full object-cover transition-all duration-1000 ${
-              videoEnded ? "opacity-40" : "opacity-100"
-            }`}
-          >
-            <source src="/brain-loop.mp4" type="video/mp4" />
-          </video>
-          <div
-            className={`absolute inset-0 transition-all duration-1000 ${
-              videoEnded ? "bg-background/70" : "bg-background/10"
-            }`}
+          <HeroSlideshow
+            slides={[
+              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 1' },
+              { type: 'video', src: '/brain-loop.mp4', alt: 'Brain animation' },
+              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 2' },
+              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 3' },
+            ]}
+            intervalMs={5000}
           />
         </div>
 
@@ -327,8 +186,16 @@ export default function NeuroTechWebsite() {
           <p className="text-lg text-muted-foreground mb-8">
             Join the next generation of neurotechnology and neuroscience enthusiasts.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/events" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
+              View Events
+            </Link>
+            <Link href="/projects" className="inline-flex items-center rounded-md px-6 py-3 border border-purple-400/50 text-purple-500 hover:bg-purple-600/10 transition">
+              Explore Projects
+            </Link>
+          </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-10 text-center">
             <button
               onClick={() => {
                 document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
@@ -374,7 +241,7 @@ At NeuroTechUofT, we are pioneering innovation in neurotechnology by merging eng
                 Join us as we shape the future of neurotechnology with passion, collaboration, and innovation at UofT Engineering.
               </p>
               
-              <a href="/about" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">Learn More</a>
+              <Link href="/about" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">Learn More</Link>
             </div>
             
             {/* Right Column - Content */}
@@ -408,199 +275,38 @@ Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parki
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-  <section className="relative z-10 py-32 px-6 bg-background">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <div className="mb-6">
-              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
-                WHAT&apos;S HAPPENING
-              </span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-light text-foreground leading-tight mb-8">
-              Upcoming 
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Events
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Join us for exciting workshops, seminars, and networking events that push the boundaries of neurotechnology.
-            </p>
-          </div>
-
-          {/* Events Container with Navigation */}
-          <div className="relative">
-            {/* Left Arrow */}
-            <button 
-              onClick={() => {
-                const container = document.getElementById('events-container');
-                if (container) {
-                  container.scrollBy({ left: -400, behavior: 'smooth' });
-                }
-              }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/80 hover:bg-card border border-border hover:border-purple-500/50 rounded-full p-3 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-400 hover:text-purple-400" />
-            </button>
-
-            {/* Right Arrow */}
-            <button 
-              onClick={() => {
-                const container = document.getElementById('events-container');
-                if (container) {
-                  container.scrollBy({ left: 400, behavior: 'smooth' });
-                }
-              }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/80 hover:bg-card border border-border hover:border-purple-500/50 rounded-full p-3 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronRight className="w-6 h-6 text-gray-400 hover:text-purple-400" />
-            </button>
-
-            {/* Scrollable Events Container */}
-            <div 
-              id="events-container"
-              className="flex overflow-x-auto scrollbar-hide gap-8 pb-6 px-16" 
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {/* Event Card 1 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
-                    Workshop
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    Mar 15, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  Brain-Computer Interface Fundamentals
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Learn the basics of BCI technology and explore hands-on applications in our state-of-the-art lab environment.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <MapPin className="w-4 h-4 mr-3" />
-                  Engineering Building
-                </div>
-              </div>
-
-              {/* Event Card 2 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
-                    Seminar
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    Mar 22, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  Neural Signal Processing in Action
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Deep dive into advanced signal processing techniques used in modern neurotechnology applications.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <Calendar className="w-4 h-4 mr-3" />
-                  6:00 PM - 8:00 PM
-                </div>
-              </div>
-
-              {/* Event Card 3 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
-                    Networking
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    Apr 5, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  Industry Connections Mixer
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Connect with industry professionals and explore career opportunities in neurotechnology.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <Users className="w-4 h-4 mr-3" />
-                  50+ Attendees
-                </div>
-              </div>
-
-              {/* Event Card 4 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
-                    Project Demo
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    Apr 12, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  NeuronMove Showcase
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  See our flagship project in action and learn about the latest developments in Parkinson&apos;s treatment.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <Microscope className="w-4 h-4 mr-3" />
-                  Live Demo
-                </div>
-              </div>
-
-              {/* Event Card 5 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-light">
-                    Conference
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    Apr 20, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  Future of Neurotechnology Summit
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Annual conference featuring keynote speakers from leading neurotechnology companies and research institutions.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <ArrowRight className="w-4 h-4 mr-3" />
-                  All Day Event
-                </div>
-              </div>
-
-              {/* Event Card 6 */}
-              <div className="flex-none w-80 bg-card/60 backdrop-blur-sm rounded-3xl border border-border p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-light">
-                    Workshop
-                  </div>
-                  <div className="text-muted-foreground text-sm font-light">
-                    May 3, 2024
-                  </div>
-                </div>
-                <h3 className="text-xl font-light text-foreground mb-4 leading-tight">
-                  Advanced Neural Interfaces
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Explore cutting-edge developments in neural interface technology and their clinical applications.
-                </p>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <MapPin className="w-4 h-4 mr-3" />
-                  Medical Sciences Building
-                </div>
-              </div>
-            </div>
-
-            {/* Gradient fade indicators */}
-            <div className="absolute left-16 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent pointer-events-none"></div>
-            <div className="absolute right-16 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none"></div>
-          </div>
+    {/* Upcoming Events (teaser) */}
+    <section id="events" className="relative z-10 py-32 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-sm uppercase tracking-wider text-purple-400 font-light">What&apos;s happening</span>
+          <h2 className="text-4xl md:text-5xl font-light mt-3">Upcoming Events</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Join us for workshops, talks, and mixers.
+          </p>
         </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {getUpcomingEvents(2).map((e) => (
+            <Link key={e.slug} href={`/events/${e.slug}`} className="block bg-card/60 border border-border rounded-2xl p-6 hover:border-purple-500/50 transition">
+              <div className="flex items-center justify-between mb-4">
+                <span className={`px-3 py-1 rounded-full text-xs ${
+                  e.type === "Workshop" || e.type === "Project Demo" ? "bg-purple-500/20 text-purple-300" : "bg-blue-500/20 text-blue-300"
+                }`}>{e.type}</span>
+                <span className="text-muted-foreground text-sm">{new Date(e.date).toLocaleDateString()}</span>
+              </div>
+              <h3 className="text-xl font-light mb-2">{e.title}</h3>
+              <p className="text-muted-foreground text-sm">{e.summary}</p>
+              {(e.location || e.time) && (
+                <p className="text-xs text-muted-foreground mt-3">{e.location}{e.location && e.time ? " • " : ""}{e.time}</p>
+              )}
+            </Link>
+          ))}
+        </div>
+        <div className="text-center mt-10">
+          <Link href="/events" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">View all events →</Link>
+        </div>
+      </div>
+    </section>
 
       {/* Featured Projects Section */}
   <section className="relative z-10 py-32 px-6 bg-background">
@@ -676,10 +382,13 @@ Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parki
           </div>
 
           {/* Call to action */}
-          <div className="text-center mt-16">
-            <a href="/projects" className="inline-flex bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 text-blue-300 hover:text-white border border-blue-500/30 hover:border-blue-400 px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105">
+          <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/projects" className="inline-flex bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 text-blue-500 hover:text-foreground border border-blue-500/30 hover:border-blue-400 px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105">
               Explore All Projects →
-            </a>
+            </Link>
+            <Link href="/events" className="inline-flex border border-purple-400/50 text-purple-500 hover:bg-purple-600/10 px-8 py-3 rounded-lg font-light transition-all duration-300">
+              Go to Events →
+            </Link>
           </div>
         </div>
       </section>
@@ -725,8 +434,8 @@ Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parki
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/contact" className="text-purple-500 hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">Get Involved →</a>
-              <a href="/projects" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">View Projects →</a>
+              <Link href="/contact" className="text-purple-500 hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">Get Involved →</Link>
+              <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">View Projects →</Link>
             </div>
           </div>
         </section>

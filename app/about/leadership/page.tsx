@@ -1,7 +1,7 @@
 "use client"
 
 import { Users } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+import TopNav from "@/components/top-nav"
 
 const teamMembers = [
   { name: "Selen Bayram", role: "Co-President", department: "Executive Committee", specialization: "Community Leadership" },
@@ -15,16 +15,18 @@ const teamMembers = [
 
 export default function LeadershipPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground pt-28 px-6 pb-16">
-      <div className="fixed top-4 right-4 z-50"><ThemeToggle /></div>
-      <section className="max-w-6xl mx-auto text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-light mb-4">Meet Our Leadership Team</h1>
+    <main className="min-h-screen bg-background text-foreground">
+      <TopNav />
+      <section className="pt-28 px-6 pb-16 max-w-6xl mx-auto text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-light mb-4">
+          <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Meet Our Leadership Team</span>
+        </h1>
         <p className="text-muted-foreground max-w-3xl mx-auto">
           Our dedicated executive team leads initiatives, coordinates projects, and fosters community growth at NeuroTechUofT.
         </p>
       </section>
 
-      <section className="max-w-6xl mx-auto">
+  <section className="px-6 max-w-6xl mx-auto pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {teamMembers.map((m) => (
             <div key={m.name} className="bg-card rounded-2xl border border-border p-6 text-center hover:border-primary/30 transition-colors">

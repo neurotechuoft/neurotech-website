@@ -3,9 +3,8 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Mail, MapPin, Send, MessageCircle } from "lucide-react"
-import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Mail, MapPin, Send, MessageCircle } from "lucide-react"
+import TopNav from "@/components/top-nav"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,58 +30,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed inset-x-0 top-0 z-50 bg-black/10 backdrop-blur-sm border-b border-gray-800/50">
-        <div className="w-full px-6 py-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Button 
-                onClick={() => window.location.href = '/'}
-                variant="ghost"
-                className="text-white/80 hover:text-white p-2"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </Button>
-              <div className="flex items-center space-x-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="NeuroTechUofT Logo" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8"
-                />
-                <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  NeuroTechUofT
-                </span>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#about" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
-                About Us
-              </Link>
-              <Link href="/projects" className="text-white/80 hover:text-purple-400 transition-colors duration-300">
-                Projects
-              </Link>
-              <a href="/contact" className="text-purple-400">
-                Contact Us
-              </a>
-              <Link href="/about" className="text-white/80 hover:text-purple-400 transition-colors duration-300">About</Link>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </nav>
+  <TopNav />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-black via-gray-900/30 to-black">
+    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-background via-muted/40 to-background">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-light mb-6 text-white leading-tight">
-            Contact 
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Us
-            </span>
-          </h1>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+  <h1 className="text-5xl md:text-7xl font-light mb-6 leading-tight">
+    <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Contact Us</span>
+      </h1>
+      <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Get in touch with our team. Whether you&apos;re interested in joining, collaborating, or just learning more about neurotechnology.
           </p>
         </div>
@@ -93,12 +49,12 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {/* Email */}
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-2xl border border-gray-700/30 p-8 text-center hover:border-purple-500/50 transition-all duration-300">
+            <div className="bg-card rounded-2xl border border-border p-8 text-center hover:border-purple-500/50 transition-all duration-300">
               <div className="w-16 h-16 bg-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Mail className="w-8 h-8 text-purple-400" />
               </div>
-              <h3 className="text-xl font-light text-white mb-4">Email Us</h3>
-              <p className="text-gray-400 mb-4 text-sm">
+              <h3 className="text-xl font-light text-foreground mb-4">Email Us</h3>
+              <p className="text-muted-foreground mb-4 text-sm">
                 Send us an email and we&apos;ll get back to you within 24 hours.
               </p>
               <a 
@@ -110,12 +66,12 @@ export default function ContactPage() {
             </div>
 
             {/* Location */}
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-2xl border border-gray-700/30 p-8 text-center hover:border-blue-500/50 transition-all duration-300">
+            <div className="bg-card rounded-2xl border border-border p-8 text-center hover:border-blue-500/50 transition-all duration-300">
               <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <MapPin className="w-8 h-8 text-blue-400" />
               </div>
-              <h3 className="text-xl font-light text-white mb-4">Visit Us</h3>
-              <p className="text-gray-400 mb-4 text-sm">
+              <h3 className="text-xl font-light text-foreground mb-4">Visit Us</h3>
+              <p className="text-muted-foreground mb-4 text-sm">
                 Find us at the University of Toronto Engineering campus.
               </p>
               <p className="text-blue-400">
@@ -126,19 +82,19 @@ export default function ContactPage() {
             </div>
 
             {/* Social */}
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-2xl border border-gray-700/30 p-8 text-center hover:border-purple-500/50 transition-all duration-300">
+            <div className="bg-card rounded-2xl border border-border p-8 text-center hover:border-purple-500/50 transition-all duration-300">
               <div className="w-16 h-16 bg-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <MessageCircle className="w-8 h-8 text-purple-400" />
               </div>
-              <h3 className="text-xl font-light text-white mb-4">Connect</h3>
-              <p className="text-gray-400 mb-4 text-sm">
+              <h3 className="text-xl font-light text-foreground mb-4">Connect</h3>
+              <p className="text-muted-foreground mb-4 text-sm">
                 Follow us on social media for updates and announcements.
               </p>
               <div className="flex justify-center space-x-4">
-                <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors duration-300">
+                <a href="#" className="text-purple-500 hover:text-purple-400 transition-colors duration-300">
                   LinkedIn
                 </a>
-                <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors duration-300">
+                <a href="#" className="text-purple-500 hover:text-purple-400 transition-colors duration-300">
                   Discord
                 </a>
               </div>
@@ -151,18 +107,18 @@ export default function ContactPage() {
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-foreground">
               Send Us a Message
             </h2>
-            <p className="text-lg text-gray-400 leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Have a specific question or want to get involved? Fill out the form below and we&apos;ll get back to you soon.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-gray-900/20 backdrop-blur-sm rounded-2xl border border-gray-700/30 p-8">
+          <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-light text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-light text-muted-foreground mb-2">
                   Full Name *
                 </label>
                 <input
@@ -172,12 +128,12 @@ export default function ContactPage() {
                   required
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-purple-400 transition-colors duration-300"
                   placeholder="Your full name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-light text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-light text-muted-foreground mb-2">
                   Email Address *
                 </label>
                 <input
@@ -187,7 +143,7 @@ export default function ContactPage() {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-purple-400 transition-colors duration-300"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -195,7 +151,7 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label htmlFor="interest" className="block text-sm font-light text-gray-300 mb-2">
+                <label htmlFor="interest" className="block text-sm font-light text-muted-foreground mb-2">
                   Area of Interest
                 </label>
                 <select
@@ -203,7 +159,7 @@ export default function ContactPage() {
                   name="interest"
                   value={formData.interest}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:border-purple-400 transition-colors duration-300"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="joining">Joining the Team</option>
@@ -213,7 +169,7 @@ export default function ContactPage() {
                 </select>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-light text-gray-300 mb-2">
+                <label htmlFor="subject" className="block text-sm font-light text-muted-foreground mb-2">
                   Subject *
                 </label>
                 <input
@@ -223,14 +179,14 @@ export default function ContactPage() {
                   required
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-purple-400 transition-colors duration-300"
                   placeholder="Brief subject line"
                 />
               </div>
             </div>
 
             <div className="mb-8">
-              <label htmlFor="message" className="block text-sm font-light text-gray-300 mb-2">
+              <label htmlFor="message" className="block text-sm font-light text-muted-foreground mb-2">
                 Message *
               </label>
               <textarea
@@ -240,7 +196,7 @@ export default function ContactPage() {
                 rows={6}
                 value={formData.message}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors duration-300 resize-vertical"
+                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-purple-400 transition-colors duration-300 resize-vertical"
                 placeholder="Tell us more about your inquiry..."
               ></textarea>
             </div>
@@ -259,32 +215,32 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-gray-900/10">
+      <section className="py-20 px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-foreground">
               Frequently Asked Questions
             </h2>
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6">
-              <h3 className="text-lg font-light text-white mb-3">How can I join NeuroTechUofT?</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-light text-foreground mb-3">How can I join NeuroTechUofT?</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 We welcome students from all backgrounds! Check out our community page for upcoming recruitment events and application processes.
               </p>
             </div>
 
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6">
-              <h3 className="text-lg font-light text-white mb-3">Do I need prior experience in neuroscience?</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-light text-foreground mb-3">Do I need prior experience in neuroscience?</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 Not at all! We value diverse perspectives and provide training for members interested in learning about neurotechnology.
               </p>
             </div>
 
-            <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl border border-gray-700/30 p-6">
-              <h3 className="text-lg font-light text-white mb-3">Can I collaborate on research projects?</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-light text-foreground mb-3">Can I collaborate on research projects?</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 Yes! We actively seek collaborations with researchers, industry partners, and other student organizations. Contact us to discuss opportunities.
               </p>
             </div>
@@ -293,7 +249,7 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-gray-800/50">
+    <footer className="py-16 px-6 border-t border-border">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
@@ -307,7 +263,7 @@ export default function ContactPage() {
               NeuroTechUofT
             </span>
           </div>
-          <p className="text-gray-500 text-sm">
+      <p className="text-muted-foreground text-sm">
             &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>

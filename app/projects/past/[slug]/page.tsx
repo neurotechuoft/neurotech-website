@@ -1,0 +1,33 @@
+import HeroSlideshow, { type Slide } from "@/components/hero-slideshow"
+import TopNav from "@/components/top-nav"
+
+export default function PastProjectDetail() {
+  const slides: Slide[] = [
+    { type: 'image', src: '/next.svg', alt: 'Past project' },
+    { type: 'image', src: '/next.svg', alt: 'Past project 2' },
+  ]
+
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <TopNav />
+      <section className="pt-28 max-w-6xl mx-auto px-6 grid gap-10 md:grid-cols-2 items-center">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-light mb-2">
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Past Project Title</span>
+          </h1>
+          <p className="text-muted-foreground mb-6">Placeholder description for past project.</p>
+          <div className="rounded-xl border border-border p-4">
+            <h2 className="text-xl font-light mb-2">Highlights</h2>
+            <ul className="text-sm text-muted-foreground list-disc pl-5">
+              <li>Key result (placeholder)</li>
+              <li>Team size and timeline (placeholder)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <HeroSlideshow slides={slides} intervalMs={5000} className="min-h-[300px] md:min-h-[420px]" />
+        </div>
+      </section>
+    </main>
+  )
+}
