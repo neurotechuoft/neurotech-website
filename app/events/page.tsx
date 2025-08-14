@@ -58,7 +58,6 @@ export default function EventsPage() {
 }
 
 type EventCardProps = EventItem & { past?: boolean };
-
 function EventCard({ slug, title, date, type, summary, image, location, time, past }: EventCardProps) {
   return (
     <Link

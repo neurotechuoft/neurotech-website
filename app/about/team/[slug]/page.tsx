@@ -10,7 +10,7 @@ export default function TeamDetailPage() {
   const slug = params?.slug ?? "team"
   const name = slug.charAt(0).toUpperCase() + slug.slice(1)
 
-  const slides: Slide[] = useMemo(() => (
+  const slides = useMemo<Slide[]>(() => (
     [0,1,2].map((i) => ({ type: 'image', src: '/next.svg', alt: `Team ${slug} ${i+1}` }))
   ), [slug])
 

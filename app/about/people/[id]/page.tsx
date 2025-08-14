@@ -7,11 +7,12 @@ import TopNav from "@/components/top-nav"
 
 export default function PersonDetailPage() {
   const params = useParams<{ id: string }>()
-  const personId = params?.id ?? "person"
+  const id = params?.id ?? "person"
 
-  const slides: Slide[] = useMemo(() => (
-    [0,1,2,3,4].map((i) => ({ type: 'image', src: '/next.svg', alt: `Slide ${i+1}` }))
-  ), [])
+  const slides = useMemo<Slide[]>(
+    () => [0, 1, 2, 3, 4].map((i) => ({ type: "image", src: "/next.svg", alt: `Slide ${i + 1}` })),
+    []
+  )
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -19,7 +20,7 @@ export default function PersonDetailPage() {
       <section className="pt-28 max-w-6xl mx-auto px-6 grid gap-10 md:grid-cols-2 items-center">
         <div>
           <h1 className="text-3xl md:text-4xl font-light mb-2">
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Person: {personId}</span>
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Person: {id}</span>
           </h1>
           <p className="text-primary">Position, Team</p>
           <p className="text-muted-foreground mb-4">Undergraduate/Graduate Program at UofT</p>

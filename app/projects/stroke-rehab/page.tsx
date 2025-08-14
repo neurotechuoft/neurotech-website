@@ -25,12 +25,7 @@ export default function StrokeRehabPage() {
                 <li>Lightweight wearable sensors (placeholder)</li>
               </ul>
             </div>
-            <div className="rounded-xl border border-border p-4">
-              <h2 className="text-xl font-light mb-2">Learn More</h2>
-              <a href="https://utmist.org/" target="_blank" rel="noopener noreferrer" className="text-sm text-purple-600 hover:underline">
-                Visit the UTMIST page →
-              </a>
-            </div>
+          
           </div>
         </div>
         <div>

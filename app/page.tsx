@@ -1,16 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import Image from "next/image"
-import { Zap, Microscope } from "lucide-react"
 import Link from "next/link"
+import { Zap, Microscope } from "lucide-react"
 import TopNav from "@/components/top-nav"
 import HeroSlideshow from "@/components/hero-slideshow"
 import { getUpcomingEvents } from "@/lib/events"
 
 export default function NeuroTechWebsite() {
   // Reveal hero text and show nav immediately (no intro lock)
-  const [showText] = useState(true)
+  const showText = true
 
   useEffect(() => {
     // Force scroll to top on page load/reload
@@ -151,7 +151,7 @@ export default function NeuroTechWebsite() {
     return () => {
   window.removeEventListener('scroll', handleScrollAnimations)
     }
-  }, [showText])
+  }, [])
 
   return (
   <div className="min-h-screen bg-background text-foreground">

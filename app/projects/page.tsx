@@ -4,7 +4,6 @@ import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Zap, Brain, Activity, Users } from "lucide-react"
-import Link from "next/link"
 import TopNav from "@/components/top-nav"
 
 export default function ProjectsPage() {
@@ -105,7 +104,7 @@ export default function ProjectsPage() {
               Projects
             </span>
           </h1>
-      <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12">
+  <p className="text-lg text-foreground max-w-3xl mx-auto leading-relaxed mb-12">
             Explore our cutting-edge research projects that are advancing the frontier of neurotechnology and brain-computer interfaces.
           </p>
           {/* R&D Tabs */}
@@ -113,12 +112,11 @@ export default function ProjectsPage() {
             {[
               { href: '/projects/neuronmove', label: 'NeuronMove' },
               { href: '/projects/stroke-rehab', label: 'Stroke Rehab' },
-              { href: '/projects/history', label: 'History' },
               { href: '/projects/past', label: 'Past Projects' },
             ].map((t) => (
-              <Link key={t.href} href={t.href} className="px-4 py-2 rounded-full border border-border bg-card text-foreground hover:border-purple-500/50 hover:text-purple-500 transition">
+        <a key={t.href} href={t.href} className="px-4 py-2 rounded-full border border-border bg-card text-foreground hover:border-purple-500/50 hover:text-purple-500 transition">
                 {t.label}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -136,8 +134,8 @@ export default function ProjectsPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`flex items-center space-x-2 px-6 py-3 rounded-full border transition-all duration-300 ${
                     selectedCategory === category.id
-          ? 'bg-purple-600/10 border-purple-400 text-purple-500'
-          : 'bg-card border-border text-muted-foreground hover:border-purple-400/50 hover:text-purple-500'
+          ? 'bg-purple-600/10 border-purple-400 text-purple-600'
+          : 'bg-card border-border text-foreground hover:border-purple-400/50 hover:text-purple-500'
                   }`}
                 >
                   <IconComponent className="w-4 h-4" />
@@ -159,17 +157,17 @@ export default function ProjectsPage() {
                 }`}
               >
                 {/* Flagship Badge */}
-                {project.flagship && (
+        {project.flagship && (
                   <div className="flex justify-end mb-4">
-                    <span className="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-xs font-light border border-yellow-500/30">
+          <span className="px-3 py-1 bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-light border border-yellow-500/30">
                       🏆 Flagship Project
                     </span>
                   </div>
                 )}
 
                 {/* Project Image Placeholder */}
-                <div className="aspect-video bg-muted/50 rounded-lg mb-6 flex items-center justify-center">
-                  <div className="text-center text-muted-foreground">
+                <div className="aspect-video bg-muted/40 rounded-lg mb-6 flex items-center justify-center">
+                  <div className="text-center text-foreground">
                     <Brain className="w-12 h-12 mx-auto mb-2 opacity-50" />
                     <p className="text-xs">{project.title}</p>
                   </div>
@@ -179,16 +177,16 @@ export default function ProjectsPage() {
                 <div className="flex items-center justify-between mb-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-light ${
                     project.status === 'active' 
-                      ? 'bg-green-500/20 text-green-300' 
-                      : 'bg-blue-500/20 text-blue-300'
+                      ? 'bg-green-500/15 text-green-700 dark:text-green-300' 
+                      : 'bg-blue-500/15 text-blue-700 dark:text-blue-300'
                   }`}>
                     {project.status === 'active' ? 'Active' : 'Completed'}
                   </span>
                   <div className="flex space-x-2">
-                    <button className="p-1 text-gray-400 hover:text-purple-400 transition-colors">
+                    <button className="p-1 text-foreground/60 hover:text-purple-600 transition-colors">
                       <Github className="w-4 h-4" />
                     </button>
-                    <button className="p-1 text-gray-400 hover:text-purple-400 transition-colors">
+                    <button className="p-1 text-foreground/60 hover:text-purple-600 transition-colors">
                       <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
@@ -198,7 +196,7 @@ export default function ProjectsPage() {
                 <h3 className="text-xl font-light text-foreground mb-3 group-hover:text-purple-500 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-foreground text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
 
@@ -207,7 +205,7 @@ export default function ProjectsPage() {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-muted/50 text-foreground/80 text-xs rounded border border-border/60"
+                      className="px-2 py-1 bg-muted/50 text-foreground text-xs rounded border border-border/60"
                     >
                       {tech}
                     </span>
@@ -215,7 +213,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Project Stats */}
-                <div className="flex justify-between text-xs text-muted-foreground">
+                <div className="flex justify-between text-xs text-foreground">
                   <span>{project.team}</span>
                   <span>{project.duration}</span>
                 </div>
@@ -231,7 +229,7 @@ export default function ProjectsPage() {
       <h2 className="text-3xl md:text-4xl font-light mb-6 text-foreground">
             Want to Contribute?
           </h2>
-      <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+  <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
             Join our team and help build the future of neurotechnology. We&apos;re always looking for passionate students and researchers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -267,7 +265,7 @@ export default function ProjectsPage() {
               NeuroTechUofT
             </span>
           </div>
-      <p className="text-muted-foreground text-sm">
+  <p className="text-foreground/80 text-sm">
             &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
           </p>
         </div>

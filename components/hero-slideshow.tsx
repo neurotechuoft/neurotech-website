@@ -37,7 +37,7 @@ export default function HeroSlideshow({ slides, intervalMs = 5000, className, sh
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, intervalMs])
 
-  // active slide is derived by index; no memo needed
+  // Note: index state already determines the active slide; no extra memo needed.
 
   return (
     <div className={`relative w-full min-h-[70vh] md:min-h-screen overflow-hidden ${className ?? ''}`} onMouseEnter={stop} onMouseLeave={start}>
