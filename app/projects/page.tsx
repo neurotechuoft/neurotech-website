@@ -5,7 +5,6 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Zap, Brain, Activity, Users } from "lucide-react"
 import TopNav from "@/components/top-nav"
-import Footer from "@/components/footer"
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
