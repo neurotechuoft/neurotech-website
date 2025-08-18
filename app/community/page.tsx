@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Users, Calendar, MessageCircle, Award, BookOpen, Heart, Coffee, Code, Brain } from "lucide-react"
 import Link from "next/link"
 import TopNav from "@/components/top-nav"
+import Footer from "@/components/footer"
 
 export default function CommunityPage() {
   const [activeTab, setActiveTab] = useState("overview")

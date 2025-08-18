@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Mail, MapPin, Send, MessageCircle } from "lucide-react"
 import TopNav from "@/components/top-nav"
+import Footer from "@/components/footer"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -268,6 +269,7 @@ export default function ContactPage() {
           </p>
         </div>
       </footer>
+      <Footer />
     </div>
   )
 }

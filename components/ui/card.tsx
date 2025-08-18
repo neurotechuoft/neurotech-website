@@ -7,9 +7,12 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-transparent py-6 shadow-sm transition-all duration-200",
+        "hover:border-purple-500 hover:shadow-lg",
+        "border-[3px] border-gradient-to-r from-purple-400 via-blue-400 to-pink-400",
         className
       )}
+      style={{ borderImage: 'linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6) 1' }}
       {...props}
     />
   )

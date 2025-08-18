@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TopNav from "@/components/top-nav";
+import Footer from "@/components/footer";
 import { getAllEvents, type EventItem } from "@/lib/events";
 
 export const metadata = {
@@ -53,6 +54,7 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

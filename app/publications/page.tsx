@@ -1,4 +1,5 @@
 import TopNav from "@/components/top-nav"
+import Footer from "@/components/footer"
 
 export default function PublicationsPage() {
   const varsity = [
@@ -67,6 +68,7 @@ export default function PublicationsPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

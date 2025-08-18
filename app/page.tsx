@@ -4,8 +4,10 @@ import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Zap, Microscope } from "lucide-react"
+
 import TopNav from "@/components/top-nav"
 import HeroSlideshow from "@/components/hero-slideshow"
+import Footer from "@/components/footer"
 import { getUpcomingEvents } from "@/lib/events"
 
 export default function NeuroTechWebsite() {
@@ -163,8 +165,8 @@ export default function NeuroTechWebsite() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <HeroSlideshow
             slides={[
-              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 1' },
               { type: 'video', src: '/brain-loop.mp4', alt: 'Brain animation' },
+              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 1' },
               { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 2' },
               { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 3' },
             ]}
@@ -177,11 +179,16 @@ export default function NeuroTechWebsite() {
             showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-6xl md:text-8xl font-light mb-6 leading-tight text-foreground">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight text-foreground">
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 NeuroTechUofT
             </span>
           </h1>
+          <div className="mb-4">
+            <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 text-white font-bold shadow-lg">
+              Celebrating 10 Years
+            </span>
+          </div>
 
           <p className="text-lg text-muted-foreground mb-8">
             Join the next generation of neurotechnology and neuroscience enthusiasts.
@@ -398,30 +405,7 @@ Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parki
         {/* Gradient transition from previous section */}
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/80 to-transparent z-20 pointer-events-none"></div>
         
-        {/* Background Image with Top-Down Reveal Effect */}
-        <div className="fixed inset-0 z-0">
-          {/* Single Brain Image */}
-          <div 
-            id="brain-image"
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-2000 ease-out"
-            style={{ 
-              backgroundImage: 'url(/brain-wallpaper.jpg)',
-              clipPath: 'inset(100% 0 0 0)',
-              transform: 'scale(1.8)',
-              filter: 'hue-rotate(0deg) brightness(1.5) saturate(0.3) contrast(1.2)',
-              opacity: '0.6'
-            }}
-          />
-          <div 
-            id="brain-overlay"
-            className="absolute inset-0 transition-all duration-1500 ease-out"
-            style={{ 
-              background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(139,69,193,0.35) 50%, rgba(59,130,246,0.25) 100%)'
-            }}
-          />
-          {/* Additional overlay for smoother blending */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/40"></div>
-        </div>
+  {/* No background image or overlay effect */}
 
         {/* Join Us Section */}
         <section id="join" className="relative z-10 py-32 px-6">
@@ -440,27 +424,8 @@ Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parki
           </div>
         </section>
 
-        {/* Footer */}
-    <footer className="relative z-10 py-16 px-6 border-t border-border/80">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center space-x-2 mb-8">
-              <Image 
-                src="/logo.png" 
-                alt="NeuroTechUofT Logo" 
-                width={24} 
-                height={24} 
-                className="w-6 h-6"
-              />
-              <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                NeuroTechUofT
-              </span>
-            </div>
-
-      <p className="text-muted-foreground text-sm">
-              &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
-            </p>
-          </div>
-        </footer>
+  {/* Footer */}
+  <Footer />
       </div>
     </div>
   )

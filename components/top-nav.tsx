@@ -17,6 +17,7 @@ const items = [
   { label: "Community", href: "/community", children: [
     { label: "NeurON Air", href: "/community/air" },
     { label: "Education", href: "/community/education" },
+    { label: "Newsletter", href: "/community/newsletter" },
   ] },
   { label: "Contact", href: "/contact" },
 ]
@@ -29,9 +30,9 @@ export default function TopNav() {
       <div className="w-full px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="NeuroTechUofT Logo" width={32} height={32} className="w-8 h-8" />
-            <span className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              NeuroTechUofT
+            <Image src="/logo.png" alt="NeurotechUofT Logo" width={32} height={32} className="w-8 h-8" />
+            <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              NeurotechUofT
             </span>
           </Link>
 
