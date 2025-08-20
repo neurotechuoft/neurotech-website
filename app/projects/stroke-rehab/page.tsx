@@ -1,5 +1,6 @@
 import HeroSlideshow, { type Slide } from "@/components/hero-slideshow"
 import TopNav from "@/components/top-nav"
+import Link from "next/link"
 
 export default function StrokeRehabPage() {
   const slides: Slide[] = [
@@ -35,12 +36,12 @@ export default function StrokeRehabPage() {
               >
                 Download/Read Project Proposal (PDF)
               </a>
-              <a
+              <Link
                 href="/events"
                 className="inline-block px-6 py-3 rounded-lg border border-purple-400 text-purple-500 bg-background font-semibold hover:bg-purple-50 hover:text-purple-700 transition-all"
               >
                 Go to Events →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
