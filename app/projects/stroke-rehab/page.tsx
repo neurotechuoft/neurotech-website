@@ -25,15 +25,21 @@ export default function StrokeRehabPage() {
                 <li>Lightweight wearable sensors (placeholder)</li>
               </ul>
             </div>
-            <div className="mt-6">
+            <div className="mt-6 flex gap-4">
               <a
                 href="/pdfs/Neurorehabilitation%20Device%20for%20Post-Stroke%20Recovery%20%E2%80%93%20Project%20Proposal%20(Final)%20(1).pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold shadow hover:scale-105 transition-all"
+                className="inline-block px-6 py-3 rounded-lg border border-purple-400 text-purple-500 bg-background font-semibold hover:bg-purple-50 hover:text-purple-700 transition-all"
                 download
               >
                 Download/Read Project Proposal (PDF)
+              </a>
+              <a
+                href="/events"
+                className="inline-block px-6 py-3 rounded-lg border border-purple-400 text-purple-500 bg-background font-semibold hover:bg-purple-50 hover:text-purple-700 transition-all"
+              >
+                Go to Events →
               </a>
             </div>
           </div>

@@ -196,7 +196,7 @@ export default function NeuroTechWebsite() {
             <Link href="/events" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
               View Events
             </Link>
-            <Link href="/projects" className="inline-flex items-center rounded-md px-6 py-3 border border-purple-400/50 text-purple-500 hover:bg-purple-600/10 transition">
+            <Link href="/projects" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
               Explore Projects
             </Link>
           </div>
