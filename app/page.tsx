@@ -226,54 +226,42 @@ export default function NeuroTechWebsite() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Text Content */}
-            <div className="transform transition-all duration-1000 ease-out" data-animate="slideInLeft">
-            <div className="mb-4">
-              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
-                ABOUT US
-              </span>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 mt-2 transform origin-left transition-all duration-700 ease-out" data-animate="scaleX"></div>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-light mb-6 text-foreground leading-tight">
-              Advancing Brain-Computer 
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                {" "}Interfaces from the Lab.
-              </span>
-              </h2>              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-At NeuroTechUofT, we are pioneering innovation in neurotechnology by merging engineering and neuroscience to create meaningful change. Through partnerships with top organizations, we spark conversations that make neurotechnology accessible and impactful for undergraduates.
+            <div className="transform transition-all duration-1000 ease-out flex flex-col justify-center h-full" data-animate="slideInLeft">
+              <div className="mb-4">
+                <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
+                  ABOUT US
+                </span>
+                <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 mt-2 transform origin-left transition-all duration-700 ease-out" data-animate="scaleX"></div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-light mb-6 text-foreground leading-tight">
+                Advancing Brain-Computer
+                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                  {" "}Interfaces from the Lab.
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                At NeuroTechUofT, we are pioneering innovation in neurotechnology by merging engineering and neuroscience to create meaningful change. Through partnerships with top organizations, we spark conversations that make neurotechnology accessible and impactful for undergraduates.
               </p>
-              
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
                 Join us as we shape the future of neurotechnology with passion, collaboration, and innovation at UofT Engineering.
               </p>
-              
-              <Link href="/about" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">Learn More</Link>
+              <Link href="/about" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 text-sm">Learn More</Link>
             </div>
-            
-            {/* Right Column - Content */}
-            <div className="space-y-8 transform transition-all duration-1000 ease-out" data-animate="slideInRight">
-              <div className="bg-card/70 backdrop-blur-sm rounded-2xl border border-border p-8 transform transition-all duration-700 ease-out hover:scale-105 hover:border-purple-500/40">
-                <h3 className="text-xl font-light text-foreground mb-4">
-                  Innovation at the Intersection
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-Our flagship project, NeuronMove, is a groundbreaking initiative to combat Parkinson&apos;s disease tremors through cutting-edge bioprosthetics and brain-wave technologies.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-6 text-center transform transition-all duration-500 ease-out hover:scale-105 hover:border-purple-400/50">
-                  <div className="text-3xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+            {/* Right Column - Larger Image, Stats Underneath */}
+            <div className="flex flex-col items-center justify-center h-full">
+              <img src="/brain-wallpaper.jpg" alt="About NeuroTechUofT Placeholder" className="rounded-2xl shadow-lg object-cover mb-8 w-full max-w-xl min-h-[340px]" />
+              <div className="flex gap-8 w-full justify-center">
+                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-4 text-center w-40">
+                  <div className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-1">
                     50+
                   </div>
-                  <p className="text-sm text-muted-foreground">Research Projects</p>
+                  <p className="text-xs text-muted-foreground">Research Projects</p>
                 </div>
-                
-                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-6 text-center transform transition-all duration-500 ease-out hover:scale-105 hover:border-blue-400/50" style={{ transitionDelay: '0.2s' }}>
-                  <div className="text-3xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-4 text-center w-40">
+                  <div className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-1">
                     200+
                   </div>
-                  <p className="text-sm text-muted-foreground">Active Members</p>
+                  <p className="text-xs text-muted-foreground">Active Members</p>
                 </div>
               </div>
             </div>
