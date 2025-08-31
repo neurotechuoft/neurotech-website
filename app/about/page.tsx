@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useEffect } from "react"
 import { GradientButton } from "@/components/ui/gradient-button"
 import TopNav from "@/components/top-nav"
@@ -95,7 +94,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  For a decade, NeurotechUofT has been at the forefront of student-led innovation in neurotechnology. We've grown from a small group of enthusiasts to a vibrant community of over 200 members.
+                  For a decade, NeurotechUofT has been at the forefront of student-led innovation in neurotechnology. We&apos;ve grown from a small group of enthusiasts to a vibrant community of over 200 members.
                 </p>
               </div>
               <div className="mt-10">
@@ -158,7 +157,7 @@ export default function AboutPage() {
               </span>
             </h2>
             <blockquote className="text-xl text-muted-foreground italic max-w-4xl mx-auto leading-relaxed">
-              "We believe that the intersection of neuroscience and technology holds unprecedented potential to enhance human capabilities, treat neurological conditions, and unlock new frontiers of understanding."
+              &quot;We believe that the intersection of neuroscience and technology holds unprecedented potential to enhance human capabilities, treat neurological conditions, and unlock new frontiers of understanding.&quot;
             </blockquote>
           </div>
           

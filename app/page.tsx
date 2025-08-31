@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import Link from "next/link"
-import { Zap, Microscope } from "lucide-react"
+import Image from "next/image"
 import { GradientButton } from "@/components/ui/gradient-button"
 
 import TopNav from "@/components/top-nav"
@@ -237,7 +237,7 @@ export default function NeurotechWebsite() {
             </div>
             {/* Right Column - Image Only */}
             <div className="flex flex-col items-center justify-center h-full">
-              <img src="/brain-wallpaper.jpg" alt="About NeurotechUofT Placeholder" className="rounded-2xl shadow-lg object-cover w-full max-w-xl min-h-[340px]" />
+              <Image src="/brain-wallpaper.jpg" alt="About NeurotechUofT Placeholder" className="rounded-2xl shadow-lg object-cover w-full max-w-xl min-h-[340px]" width={600} height={340} />
             </div>
           </div>
         </div>
@@ -343,7 +343,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech."
+                    &quot;Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech.&quot;
                   </p>
                 </div>
 
@@ -358,7 +358,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives."
+                    &quot;The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives.&quot;
                   </p>
                 </div>
 
@@ -373,7 +373,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology."
+                    &quot;The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology.&quot;
                   </p>
                 </div>
 
@@ -389,7 +389,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech."
+                    &quot;Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech.&quot;
                   </p>
                 </div>
 
@@ -404,7 +404,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives."
+                    &quot;The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives.&quot;
                   </p>
                 </div>
 
@@ -419,7 +419,7 @@ export default function NeurotechWebsite() {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    "The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology."
+                    &quot;The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology.&quot;
                   </p>
                 </div>
               </div>
