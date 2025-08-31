@@ -5,8 +5,8 @@ import Footer from "@/components/footer";
 import { getAllEvents, type EventItem } from "@/lib/events";
 
 export const metadata = {
-  title: "Events | NeuroTechUofT",
-  description: "All upcoming and past events at NeuroTechUofT.",
+  title: "Events | NeurotechUofT",
+  description: "All upcoming and past events at NeurotechUofT.",
 };
 
 export default function EventsPage() {

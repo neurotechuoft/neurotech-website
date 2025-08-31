@@ -39,7 +39,7 @@ const IntegratedHorizontalParallax = () => {
       id: 'who-we-are',
       title: 'Who We Are',
       subtitle: 'Passionate Innovators',
-      description: 'We are a diverse community of undergraduate students at the University of Toronto Engineering, united by our passion for neurotechnology. Our team combines expertise from various engineering disciplines with deep curiosity about the human brain and nervous system.',
+      description: 'We are a diverse community of undergraduate students at the University of Toronto Engineering, united by our passion for Neurotechnology. Our team combines expertise from various engineering disciplines with deep curiosity about the human brain and nervous system.',
       icon: <Users className="w-20 h-20 text-pink-400" />,
       gradient: 'from-pink-600/20 to-rose-600/20',
       bgGradient: 'from-pink-900/10 via-black to-rose-900/10'
@@ -57,7 +57,7 @@ const IntegratedHorizontalParallax = () => {
       id: 'our-mission',
       title: 'Our Mission',
       subtitle: 'Transforming Lives Through Innovation',
-      description: 'We strive to make neurotechnology accessible and impactful for undergraduates while developing solutions that transform lives. Through collaboration, research, and hands-on projects, we\'re shaping the future of how technology interfaces with the human brain.',
+      description: 'We strive to make Neurotechnology accessible and impactful for undergraduates while developing solutions that transform lives. Through collaboration, research, and hands-on projects, we\'re shaping the future of how technology interfaces with the human brain.',
       icon: <Zap className="w-20 h-20 text-yellow-400" />,
       gradient: 'from-yellow-600/20 to-orange-600/20',
       bgGradient: 'from-yellow-900/10 via-black to-orange-900/10'

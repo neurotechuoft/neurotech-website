@@ -72,7 +72,7 @@ export default function CommunityPage() {
     },
     {
       title: "Neurotech Talk Series",
-      description: "Guest speakers from industry and academia sharing insights on neurotechnology",
+      description: "Guest speakers from industry and academia sharing insights on Neurotechnology",
       time: "Monthly - First Friday",
       location: "Hybrid (In-person + Virtual)",
       type: "monthly"
@@ -90,7 +90,7 @@ export default function CommunityPage() {
     {
       icon: Brain,
       title: "Cutting-edge Research",
-      description: "Work on real neurotechnology projects with impact"
+      description: "Work on real Neurotechnology projects with impact"
     },
     {
       icon: Users,
@@ -120,7 +120,7 @@ export default function CommunityPage() {
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Our Community</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-            Join a vibrant community of students, researchers, and innovators passionate about neurotechnology and brain-computer interfaces.
+            Join a vibrant community of students, researchers, and innovators passionate about Neurotechnology and brain-computer interfaces.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -206,10 +206,10 @@ export default function CommunityPage() {
                   </span>
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  NeuroTechUofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for neurotechnology.
+                  NeurotechUofT brings together students from diverse academic backgrounds - engineering, neuroscience, computer science, and beyond - united by a shared passion for Neurotechnology.
                 </p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Our community is built on principles of collaboration, innovation, and inclusivity. We believe that the future of neurotechnology lies in interdisciplinary approaches and diverse perspectives.
+                  Our community is built on principles of collaboration, innovation, and inclusivity. We believe that the future of Neurotechnology lies in interdisciplinary approaches and diverse perspectives.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
@@ -231,7 +231,7 @@ export default function CommunityPage() {
                 <div className="space-y-6">
                   <blockquote className="border-l-4 border-purple-400 pl-6">
                     <p className="text-muted-foreground italic mb-2">
-                      &quot;Joining NeuroTechUofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
+                      &quot;Joining NeurotechUofT opened doors I never knew existed. The projects are challenging and the community is incredibly supportive.&quot;
                     </p>
                     <cite className="text-purple-500 text-sm">- Maria S., 3rd Year Computer Science</cite>
                   </blockquote>
@@ -351,18 +351,18 @@ export default function CommunityPage() {
             Ready to Join Our Community?
           </h2>
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Take the first step towards becoming part of an innovative community that&apos;s shaping the future of neurotechnology.
+            Take the first step towards becoming part of an innovative community that&apos;s shaping the future of Neurotechnology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => window.location.href = '/contact'}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3"
+              className="px-8 py-3"
             >
               Apply Now
             </Button>
             <Button 
               variant="outline" 
-        className="border-purple-400/50 text-purple-500 hover:bg-purple-600/10 px-8 py-3"
+              className="px-8 py-3"
             >
               Learn More
             </Button>
@@ -376,17 +376,17 @@ export default function CommunityPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="NeuroTechUofT Logo" 
+              alt="NeurotechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              NeuroTechUofT
+              NeurotechUofT
             </span>
           </div>
           <p className="text-muted-foreground text-sm">
-            &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeurotechUofT. Pioneering the future of Neurotechnology.
           </p>
         </div>
       </footer>

@@ -26,14 +26,14 @@ const events: EventItem[] = [
     image: "/brain-wallpaper.jpg",
   },
   {
-    slug: "future-of-neurotech-summit-2024",
+    slug: "future-of-Neurotech-summit-2024",
     title: "Future of Neurotechnology Summit",
     type: "Conference",
     date: "2024-04-20",
     time: "All Day",
     location: "Convocation Hall",
     summary:
-      "Annual conference featuring keynote speakers from leading neurotechnology companies and research institutions.",
+      "Annual conference featuring keynote speakers from leading Neurotechnology companies and research institutions.",
     image: "/brain-wallpaper.jpg",
   },
   {
@@ -55,7 +55,7 @@ const events: EventItem[] = [
     time: "6:00 PM - 8:00 PM",
     location: "BA 1130",
     summary:
-      "Deep dive into advanced signal processing techniques used in modern neurotechnology applications.",
+      "Deep dive into advanced signal processing techniques used in modern Neurotechnology applications.",
     image: "/brain-wallpaper.jpg",
   },
   {
@@ -66,7 +66,7 @@ const events: EventItem[] = [
     time: "6:00 PM - 9:00 PM",
     location: "Hart House",
     summary:
-      "Connect with industry professionals and explore career opportunities in neurotechnology.",
+      "Connect with industry professionals and explore career opportunities in Neurotechnology.",
     image: "/brain-wallpaper.jpg",
   },
   {
@@ -82,14 +82,14 @@ const events: EventItem[] = [
   },
   // Upcoming (relative to Aug 12, 2025)
   {
-    slug: "neurotech-welcome-mixer-2025",
-    title: "NeuroTech Welcome Mixer",
+    slug: "Neurotech-welcome-mixer-2025",
+    title: "Neurotech Welcome Mixer",
     type: "Networking",
     date: "2025-09-10",
     time: "6:00 PM - 8:00 PM",
     location: "Grad Lounge",
     summary:
-      "Kick off the semester with fellow neurotech enthusiasts, mentors, and project leads.",
+      "Kick off the semester with fellow Neurotech enthusiasts, mentors, and project leads.",
     image: "/brain-wallpaper.jpg",
   },
   {

@@ -24,7 +24,7 @@ export default function PersonDetailPage() {
           </h1>
           <p className="text-primary">Position, Team</p>
           <p className="text-muted-foreground mb-4">Undergraduate/Graduate Program at UofT</p>
-          <p className="text-muted-foreground">Placeholder bio text about the person, achievements, interests, and contributions to NeuroTechUofT. This section will be auto-filled from Google Form responses in a later iteration.</p>
+          <p className="text-muted-foreground">Placeholder bio text about the person, achievements, interests, and contributions to NeurotechUofT. This section will be auto-filled from Google Form responses in a later iteration.</p>
         </div>
         <div>
           <HeroSlideshow slides={slides} intervalMs={5000} className="min-h-[320px] md:min-h-[420px]" />

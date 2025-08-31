@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
     setMounted(true)
   const stored = typeof window !== 'undefined' ? localStorage.getItem('theme') : null
-  // Default to light unless user explicitly stored 'dark'. Ignore system preference.
-  const shouldDark = stored ? stored === 'dark' : false
+  // Default to dark unless user explicitly stored 'light'. Ignore system preference.
+  const shouldDark = stored ? stored === 'dark' : true
     setIsDark(shouldDark)
     document.documentElement.classList.toggle('dark', shouldDark)
   }, [])

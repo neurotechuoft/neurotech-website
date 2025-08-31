@@ -7,8 +7,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const e = getEventBySlug(slug);
   return {
-    title: e ? `${e.title} | Events | NeuroTechUofT` : "Event | NeuroTechUofT",
-    description: e?.summary || "NeuroTechUofT event details.",
+    title: e ? `${e.title} | Events | NeurotechUofT` : "Event | NeurotechUofT",
+    description: e?.summary || "NeurotechUofT event details.",
   };
 }
 

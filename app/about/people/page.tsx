@@ -19,7 +19,7 @@ export default function PeoplePage() {
       <div className="pt-28 px-6 pb-16">
       <section className="max-w-6xl mx-auto text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-light mb-3">
-          <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">People</span>
+          <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Leadership</span>
         </h1>
         <p className="text-muted-foreground">Leadership-style grid. Click a person to view their page.</p>
       </section>

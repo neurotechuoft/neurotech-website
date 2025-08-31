@@ -10,16 +10,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light shadow-lg shadow-purple-500/20",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-gradient-to-r from-red-600/80 to-rose-600/80 hover:from-red-600 hover:to-rose-600 text-white border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light shadow-lg shadow-red-500/20",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border border-border/60 bg-transparent text-foreground/80 hover:text-purple-500 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-gradient-to-r from-indigo-600/80 to-purple-600/80 hover:from-indigo-600 hover:to-purple-600 text-white border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light shadow-lg shadow-indigo-500/20",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "text-foreground/80 hover:text-purple-500 hover:bg-purple-500/10 backdrop-blur-sm transition-all duration-300",
+        link: "text-foreground/80 hover:text-purple-500 underline-offset-4 hover:underline transition-colors duration-300",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

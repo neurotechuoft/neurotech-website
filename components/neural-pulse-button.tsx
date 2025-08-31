@@ -33,8 +33,8 @@ export function NeuralPulseButton({ children, onClick, className = "" }: NeuralP
 
       <Button
         onClick={handleClick}
-        className={`relative z-10 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 border-0 transition-all duration-300 ${
-          isPulsing ? "scale-105 shadow-lg shadow-cyan-400/25" : ""
+        className={`relative z-10 transition-all duration-300 ${
+          isPulsing ? "scale-105 shadow-lg shadow-indigo-400/25" : ""
         } ${className}`}
       >
         {children}

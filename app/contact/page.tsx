@@ -40,7 +40,7 @@ export default function ContactPage() {
     <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Contact Us</span>
       </h1>
       <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Get in touch with our team. Whether you&apos;re interested in joining, collaborating, or just learning more about neurotechnology.
+            Get in touch with our team. Whether you&apos;re interested in joining, collaborating, or just learning more about Neurotechnology.
           </p>
         </div>
       </section>
@@ -59,10 +59,10 @@ export default function ContactPage() {
                 Send us an email and we&apos;ll get back to you within 24 hours.
               </p>
               <a 
-                href="mailto:neurotech@uoft.ca" 
+                href="mailto:Neurotech@uoft.ca" 
                 className="text-purple-400 hover:text-purple-300 transition-colors duration-300"
               >
-                neurotech@uoft.ca
+                Neurotech@uoft.ca
               </a>
             </div>
 
@@ -205,7 +205,7 @@ export default function ContactPage() {
             <div className="text-center">
               <Button
                 type="submit"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 font-light transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 font-light hover:scale-105"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Send Message
@@ -226,7 +226,7 @@ export default function ContactPage() {
 
           <div className="space-y-6">
             <div className="bg-card rounded-xl border border-border p-6">
-              <h3 className="text-lg font-light text-foreground mb-3">How can I join NeuroTechUofT?</h3>
+              <h3 className="text-lg font-light text-foreground mb-3">How can I join NeurotechUofT?</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 We welcome students from all backgrounds! Check out our community page for upcoming recruitment events and application processes.
               </p>
@@ -235,7 +235,7 @@ export default function ContactPage() {
             <div className="bg-card rounded-xl border border-border p-6">
               <h3 className="text-lg font-light text-foreground mb-3">Do I need prior experience in neuroscience?</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Not at all! We value diverse perspectives and provide training for members interested in learning about neurotechnology.
+                Not at all! We value diverse perspectives and provide training for members interested in learning about Neurotechnology.
               </p>
             </div>
 
@@ -255,17 +255,17 @@ export default function ContactPage() {
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image 
               src="/logo.png" 
-              alt="NeuroTechUofT Logo" 
+              alt="NeurotechUofT Logo" 
               width={24} 
               height={24} 
               className="w-6 h-6"
             />
             <span className="text-lg font-extralight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              NeuroTechUofT
+              NeurotechUofT
             </span>
           </div>
       <p className="text-muted-foreground text-sm">
-            &copy; 2025 NeuroTechUofT. Pioneering the future of neurotechnology.
+            &copy; 2025 NeurotechUofT. Pioneering the future of Neurotechnology.
           </p>
         </div>
       </footer>

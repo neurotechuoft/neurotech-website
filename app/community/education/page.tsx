@@ -6,7 +6,7 @@ const modules = [
   { title: "BCI 101", description: "Crash course on brain-computer interfaces (signals, hardware, decoding)." },
   { title: "Signal Processing Basics", description: "Filters, FFT, feature extraction for EEG/EMG (intro level)." },
   { title: "Machine Learning for Neuro", description: "From features to classifiers, cross-validation, pitfalls." },
-  { title: "Ethics & Accessibility", description: "Responsible neurotech, safety, inclusion, and human factors." },
+  { title: "Ethics & Accessibility", description: "Responsible Neurotech, safety, inclusion, and human factors." },
 ]
 
 export default function EducationPage() {
@@ -21,7 +21,7 @@ export default function EducationPage() {
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Education</span>
           </h1>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            Crash-course materials for students getting started in neurotechnology.
+            Crash-course materials for students getting started in Neurotechnology.
           </p>
         </div>
       </section>

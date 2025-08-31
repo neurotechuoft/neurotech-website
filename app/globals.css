@@ -3,6 +3,80 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-400px * 3 - 2rem * 3));
+  }
+}
+
+@keyframes scrollSponsors {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-180px * 5 - 4rem * 5));
+  }
+}
+
+@layer utilities {
+  .animate-scroll-slow {
+    animation: scroll 30s linear infinite;
+  }
+  .animate-scroll-slower {
+    animation: scrollSponsors 40s linear infinite;
+  }
+  .btn-gradient {
+    @apply inline-flex items-center rounded-md border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light;
+    @apply bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600;
+    @apply text-white shadow-lg shadow-purple-500/20;
+  }
+  
+  .btn-ghost {
+    @apply inline-flex items-center rounded-md border border-border/60 backdrop-blur-sm transition-all duration-300;
+    @apply bg-transparent hover:bg-purple-500/10 text-foreground/80 hover:text-purple-500;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    .hero-section {
+      min-height: 100vh;
+      padding-top: 6rem;
+    }
+    
+    .section-padding {
+      @apply py-16 px-4;
+    }
+    
+    .mobile-text-scale {
+      @apply text-sm leading-relaxed;
+    }
+    
+    .mobile-card-spacing {
+      @apply gap-4 p-4;
+    }
+    
+    /* Disable hover effects on mobile */
+    .hover\:scale-105:hover {
+      transform: scale(1);
+    }
+    
+    /* Reduce motion for mobile users */
+    .animate-pulse {
+      animation: none;
+    }
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tablet-grid {
+      @apply grid-cols-2;
+    }
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

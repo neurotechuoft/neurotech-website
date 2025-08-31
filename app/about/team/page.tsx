@@ -7,7 +7,7 @@ const teams = [
   { slug: "neuroscience", name: "Neuroscience", blurb: "Signal processing and biology" },
   { slug: "outreach", name: "Outreach", blurb: "Community and partnerships" },
   { slug: "content", name: "Content Creation", blurb: "Design and storytelling" },
-  { slug: "podcast", name: "Podcast", blurb: "Conversations in neurotech" },
+  { slug: "podcast", name: "Podcast", blurb: "Conversations in Neurotech" },
 ]
 
 export default function TeamIndexPage() {

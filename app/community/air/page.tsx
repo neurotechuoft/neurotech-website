@@ -28,7 +28,7 @@ export default function NeurONAirPage() {
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">NeurON Air</span>
           </h1>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            Conversations with guests in neurotech. Each episode section includes a guest image and streaming links.
+            Conversations with guests in Neurotech. Each episode section includes a guest image and streaming links.
           </p>
         </div>
       </section>

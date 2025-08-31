@@ -3,13 +3,14 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { Zap, Microscope } from "lucide-react"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 import TopNav from "@/components/top-nav"
 import HeroSlideshow from "@/components/hero-slideshow"
 import Footer from "@/components/footer"
 import { getUpcomingEvents } from "@/lib/events"
 
-export default function NeuroTechWebsite() {
+export default function NeurotechWebsite() {
   // Reveal hero text and show nav immediately (no intro lock)
   const showText = true
 
@@ -178,27 +179,21 @@ export default function NeuroTechWebsite() {
             showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight text-foreground">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 leading-tight text-foreground">
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                NeuroTechUofT
+                NeurotechUofT
             </span>
           </h1>
-          <div className="mb-4">
-            <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 text-white font-bold shadow-lg">
-              Celebrating 10 Years
-            </span>
-          </div>
-
-          <p className="text-lg text-muted-foreground mb-8">
-            Join the next generation of neurotechnology and neuroscience enthusiasts.
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join the next generation of Neurotechnology and neuroscience enthusiasts.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/events" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+            <GradientButton href="/events">
               View Events
-            </Link>
-            <Link href="/projects" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">
+            </GradientButton>
+            <GradientButton href="/projects">
               Explore Projects
-            </Link>
+            </GradientButton>
           </div>
 
           <div className="mt-10 text-center">
@@ -228,188 +223,280 @@ export default function NeuroTechWebsite() {
             {/* Left Column - Text Content */}
             <div className="transform transition-all duration-1000 ease-out flex flex-col justify-center h-full" data-animate="slideInLeft">
               <div className="mb-4">
-                <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
-                  ABOUT US
-                </span>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 mt-2 transform origin-left transition-all duration-700 ease-out" data-animate="scaleX"></div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-light mb-6 text-foreground leading-tight">
-                Advancing Brain-Computer
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-foreground leading-tight">
+                Engineering the future of
                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  {" "}Interfaces from the Lab.
+                  {" "}human potential at the University of Toronto.
                 </span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                At NeuroTechUofT, we are pioneering innovation in neurotechnology by merging engineering and neuroscience to create meaningful change. Through partnerships with top organizations, we spark conversations that make neurotechnology accessible and impactful for undergraduates.
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">
+                For a decade, NeurotechUofT has been at the forefront of student-led innovation in neurotechnology. We&apos;ve grown from a small group of enthusiasts to a vibrant community of over 200 members, pioneering breakthrough research and fostering the next generation of neurotech leaders.
               </p>
-              <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-                Join us as we shape the future of neurotechnology with passion, collaboration, and innovation at UofT Engineering.
-              </p>
-              <Link href="/about" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 text-sm">Learn More</Link>
+              <Link href="/projects" className="inline-flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-indigo-500/25 border border-indigo-400/30 hover:border-indigo-300/50 text-sm">Check out our R&D & Events</Link>
             </div>
-            {/* Right Column - Larger Image, Stats Underneath */}
+            {/* Right Column - Image Only */}
             <div className="flex flex-col items-center justify-center h-full">
-              <img src="/brain-wallpaper.jpg" alt="About NeuroTechUofT Placeholder" className="rounded-2xl shadow-lg object-cover mb-8 w-full max-w-xl min-h-[340px]" />
-              <div className="flex gap-8 w-full justify-center">
-                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-4 text-center w-40">
-                  <div className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-1">
-                    50+
-                  </div>
-                  <p className="text-xs text-muted-foreground">Research Projects</p>
-                </div>
-                <div className="bg-card/60 backdrop-blur-sm rounded-xl border border-border p-4 text-center w-40">
-                  <div className="text-2xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-1">
-                    200+
-                  </div>
-                  <p className="text-xs text-muted-foreground">Active Members</p>
-                </div>
-              </div>
+              <img src="/brain-wallpaper.jpg" alt="About NeurotechUofT Placeholder" className="rounded-2xl shadow-lg object-cover w-full max-w-xl min-h-[340px]" />
             </div>
           </div>
         </div>
       </section>
 
     {/* Upcoming Events (teaser) */}
-    <section id="events" className="relative z-10 py-32 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section id="events" className="relative z-10 py-32 px-6 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-sm uppercase tracking-wider text-purple-400 font-light">What&apos;s happening</span>
-          <h2 className="text-4xl md:text-5xl font-light mt-3">Upcoming Events</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mt-3">Upcoming Events</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Join us for workshops, talks, and mixers.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {getUpcomingEvents(2).map((e) => (
-            <Link key={e.slug} href={`/events/${e.slug}`} className="block bg-card/60 border border-border rounded-2xl p-6 hover:border-purple-500/50 transition">
-              <div className="flex items-center justify-between mb-4">
-                <span className={`px-3 py-1 rounded-full text-xs ${
-                  e.type === "Workshop" || e.type === "Project Demo" ? "bg-purple-500/20 text-purple-300" : "bg-blue-500/20 text-blue-300"
-                }`}>{e.type}</span>
-                <span className="text-muted-foreground text-sm">{new Date(e.date).toLocaleDateString()}</span>
-              </div>
-              <h3 className="text-xl font-light mb-2">{e.title}</h3>
-              <p className="text-muted-foreground text-sm">{e.summary}</p>
-              {(e.location || e.time) && (
-                <p className="text-xs text-muted-foreground mt-3">{e.location}{e.location && e.time ? " • " : ""}{e.time}</p>
-              )}
-            </Link>
-          ))}
+
+        {/* Events Auto-Scrolling Container */}
+        <div className="relative">
+          <div 
+            className="flex space-x-8 overflow-hidden py-8 w-full"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
+            }}
+          >
+            {/* Animated Inner Container */}
+            <div className="flex space-x-8 animate-scroll-slow">
+              {/* Original Events */}
+              {[...getUpcomingEvents(4), ...getUpcomingEvents(4)].map((e, index) => (
+                <Link 
+                  key={`${e.slug}-${index}`} 
+                  href={`/events/${e.slug}`} 
+                  className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`px-3 py-1 rounded-full text-xs ${
+                      e.type === "Workshop" || e.type === "Project Demo" ? "bg-purple-500/20 text-purple-300" : "bg-blue-500/20 text-blue-300"
+                    }`}>{e.type}</span>
+                    <span className="text-muted-foreground text-sm">{new Date(e.date).toLocaleDateString()}</span>
+                  </div>
+                  <h3 className="text-xl font-light mb-2">{e.title}</h3>
+                  <p className="text-muted-foreground text-sm">{e.summary}</p>
+                  {(e.location || e.time) && (
+                    <p className="text-xs text-muted-foreground mt-3">{e.location}{e.location && e.time ? " • " : ""}{e.time}</p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
+
         <div className="text-center mt-10">
-          <Link href="/events" className="inline-flex items-center rounded-md px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-primary-foreground border border-border/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 font-light">View all events →</Link>
+          <GradientButton href="/events">View all events →</GradientButton>
         </div>
       </div>
     </section>
 
-      {/* Featured Projects Section */}
-  <section className="relative z-10 py-32 px-6 bg-background">
+      {/* Testimonials Section */}
+      <section className="relative z-10 py-32 px-6 bg-background overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-32 left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-32 right-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute top-32 left-20 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+          {/* Gradient overlay for smooth transition */}
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-blue-950/30 to-gray-950/50"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <div className="mb-6">
-              <span className="text-sm uppercase tracking-wider text-blue-400 font-light">
-                FEATURED PROJECTS
+              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
+                TESTIMONIALS
               </span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-light text-foreground leading-tight mb-8">
-              Breakthrough 
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Research
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight mb-8">
+              Our Community  
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                 Speaks
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Discover our cutting-edge projects that are pushing the boundaries of neurotechnology and transforming lives.
-            </p>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - 10,000x Flexibility */}
-            <div className="space-y-8">
-              <div className="border-l-4 border-purple-400 pl-8">
-                <h3 className="text-6xl md:text-7xl font-light text-foreground mb-4">
-                  10,000x
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  softer than today&apos;s flexible electronics
-                </p>
-              </div>
-              
-              {/* Hardware Image Placeholder */}
-              <div className="bg-card/60 rounded-2xl p-8 border border-border/80">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center text-muted-foreground">
-                    <Microscope className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                    <p className="text-sm">Flexible Neural Interface Hardware</p>
+          {/* Testimonials Auto-Scrolling Container */}
+          <div className="relative">
+            <div 
+              className="flex space-x-8 overflow-hidden py-8 w-full"
+              style={{
+                maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
+              }}
+            >
+              {/* Animated Inner Container */}
+              <div className="flex space-x-8 animate-scroll-slow">
+                {/* Testimonial Cards - Original Set */}
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">🧠</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Sarah Chen</h3>
+                      <p className="text-sm text-muted-foreground">Research Lead &apos;24</p>
+                    </div>
                   </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech."
+                  </p>
+                </div>
+
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Michael Patel</h3>
+                      <p className="text-sm text-muted-foreground">Project Director &apos;23</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives."
+                  </p>
+                </div>
+
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">🔬</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Dr. Emma Rodriguez</h3>
+                      <p className="text-sm text-muted-foreground">Faculty Advisor</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology."
+                  </p>
+                </div>
+
+                {/* Duplicate Set for Seamless Loop */}
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">🧠</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Sarah Chen</h3>
+                      <p className="text-sm text-muted-foreground">Research Lead &apos;24</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "Being part of NeurotechUofT has been transformative. The hands-on experience with cutting-edge BCI technology and the supportive community have shaped my career in neurotech."
+                  </p>
+                </div>
+
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Michael Patel</h3>
+                      <p className="text-sm text-muted-foreground">Project Director &apos;23</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "The collaborative spirit here is unmatched. We&apos;re not just learning about neurotechnology – we&apos;re actively developing solutions that could change lives."
+                  </p>
+                </div>
+
+                <div className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 flex items-center justify-center">
+                      <span className="text-2xl">🔬</span>
+                    </div>
+                    <div>
+                      <h3 className="font-light text-lg">Dr. Emma Rodriguez</h3>
+                      <p className="text-sm text-muted-foreground">Faculty Advisor</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    "The innovation and dedication I see in these students is inspiring. They&apos;re not just learning – they&apos;re pushing the boundaries of what&apos;s possible in neurotechnology."
+                  </p>
                 </div>
               </div>
             </div>
-
-            {/* Right Column - 1,000x Electrode Density */}
-            <div className="space-y-8">
-              <div className="border-l-4 border-blue-400 pl-8">
-                <h3 className="text-6xl md:text-7xl font-light text-foreground mb-4">
-                  1,000x
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  greater electrode density than soft probes on the market
-                </p>
-              </div>
-              
-              {/* Electrode Array Image Placeholder */}
-              <div className="bg-card/60 rounded-2xl p-8 border border-border/80">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center text-muted-foreground">
-                    <Zap className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                    <p className="text-sm">Ultra-Dense Electrode Array</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Call to action */}
-          <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/projects" className="inline-flex bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 text-blue-500 hover:text-foreground border border-blue-500/30 hover:border-blue-400 px-8 py-3 rounded-lg font-light transition-all duration-300 hover:scale-105">
-              Explore All Projects →
-            </Link>
-            <Link href="/events" className="inline-flex border border-purple-400/50 text-purple-500 hover:bg-purple-600/10 px-8 py-3 rounded-lg font-light transition-all duration-300">
-              Go to Events →
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Join Us and Footer Container with Brain Circuit Background */}
-      <div className="relative">
-        {/* Gradient transition from previous section */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/80 to-transparent z-20 pointer-events-none"></div>
+      {/* Sponsors Section */}
+      <section className="relative z-10 py-32 bg-gradient-to-b from-background via-muted/10 to-background overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-20 w-64 h-64 bg-purple-500/3 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-20 w-80 h-80 bg-blue-500/3 rounded-full blur-3xl"></div>
+        </div>
         
-  {/* No background image or overlay effect */}
-
-        {/* Join Us Section */}
-        <section id="join" className="relative z-10 py-32 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-light mb-8 text-foreground">
-              Join Our Mission
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <div className="mb-6">
+              <span className="text-sm uppercase tracking-wider text-purple-400/70 font-light">Our Partners</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground leading-tight mb-4">
+              Proudly
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                {" "}Sponsored By
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12">
-              Be part of the next generation of innovators shaping the future of neurotechnology.
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              Working alongside leading organizations to advance neurotechnology research and innovation
             </p>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/contact" className="text-purple-500 hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">Get Involved →</Link>
-              <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide">View Projects →</Link>
+          {/* Sponsor Logos */}
+          <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-16 lg:gap-20 max-w-4xl mx-auto">
+            {/* CPSIF */}
+            <div className="group">
+              <img 
+                src="/sponsors/cpsif.png" 
+                alt="CPSIF - Canadian Partnership for Stroke and Innovation Fund" 
+                className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              />
+            </div>
+            
+            {/* SEP */}
+            <div className="group">
+              <img 
+                src="/sponsors/sep white.png" 
+                alt="SEP - Startup Engineering Program" 
+                className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              />
+            </div>
+            
+            {/* SIF */}
+            <div className="group">
+              <img 
+                src="/sponsors/sif reg-white.png" 
+                alt="SIF - Student Innovation Fund" 
+                className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              />
             </div>
           </div>
-        </section>
+
+          {/* Additional info */}
+          <div className="text-center mt-12">
+            <p className="text-sm text-muted-foreground/70 font-light">
+              Interested in partnering with us? <a href="/contact" className="text-purple-400 hover:text-purple-300 transition-colors">Get in touch</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Join Us and Footer Container */}
+      <div className="relative">
+        {/* No background image or overlay effect */}
+
+        {/* Join Us Section */}
+        
 
   {/* Footer */}
   <Footer />

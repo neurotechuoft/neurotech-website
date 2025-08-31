@@ -102,7 +102,7 @@ export function BrainScanViewer() {
           <Button
             size="sm"
             onClick={() => setIsScanning(!isScanning)}
-            className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 border-0"
+            className=""
           >
             {isScanning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
           </Button>

@@ -22,7 +22,7 @@ export default function LeadershipPage() {
           <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Meet Our Leadership Team</span>
         </h1>
         <p className="text-muted-foreground max-w-3xl mx-auto">
-          Our dedicated executive team leads initiatives, coordinates projects, and fosters community growth at NeuroTechUofT.
+          Our dedicated executive team leads initiatives, coordinates projects, and fosters community growth at NeurotechUofT.
         </p>
       </section>
 

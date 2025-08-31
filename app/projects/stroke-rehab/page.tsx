@@ -1,6 +1,7 @@
 import HeroSlideshow, { type Slide } from "@/components/hero-slideshow"
 import TopNav from "@/components/top-nav"
 import Link from "next/link"
+import { cn, getButtonClass } from "@/lib/utils"
 
 export default function StrokeRehabPage() {
   const slides: Slide[] = [
@@ -31,14 +32,14 @@ export default function StrokeRehabPage() {
                 href="/pdfs/Neurorehabilitation%20Device%20for%20Post-Stroke%20Recovery%20%E2%80%93%20Project%20Proposal%20(Final)%20(1).pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-3 rounded-lg border border-purple-400 text-purple-500 bg-background font-semibold hover:bg-purple-50 hover:text-purple-700 transition-all"
+                className={getButtonClass({ variant: "ghost" })}
                 download
               >
                 Download/Read Project Proposal (PDF)
               </a>
               <Link
                 href="/events"
-                className="inline-block px-6 py-3 rounded-lg border border-purple-400 text-purple-500 bg-background font-semibold hover:bg-purple-50 hover:text-purple-700 transition-all"
+                className={getButtonClass({ variant: "ghost" })}
               >
                 Go to Events →
               </Link>

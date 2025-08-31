@@ -32,10 +32,10 @@ export default function Footer() {
           <div>
             <div className="font-semibold mb-2 text-purple-600 dark:text-purple-400">Connect</div>
             <ul className="space-y-1">
-              <li><a href="mailto:info@neurotechuoft.ca" className="hover:text-purple-500">Email</a></li>
-              <li><a href="https://www.facebook.com/neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">Facebook</a></li>
-              <li><a href="https://www.instagram.com/neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">Instagram</a></li>
-              <li><a href="https://www.linkedin.com/company/neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">LinkedIn</a></li>
+              <li><a href="mailto:info@Neurotechuoft.ca" className="hover:text-purple-500">Email</a></li>
+              <li><a href="https://www.facebook.com/Neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">Facebook</a></li>
+              <li><a href="https://www.instagram.com/Neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/Neurotechuoft" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500">LinkedIn</a></li>
             </ul>
           </div>
         </div>
