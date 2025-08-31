@@ -456,28 +456,34 @@ export default function NeurotechWebsite() {
           <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-16 lg:gap-20 max-w-4xl mx-auto">
             {/* CPSIF */}
             <div className="group">
-              <img 
+              <Image 
                 src="/sponsors/cpsif.png" 
                 alt="CPSIF - Canadian Partnership for Stroke and Innovation Fund" 
                 className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+                width={80}
+                height={80}
               />
             </div>
             
             {/* SEP */}
             <div className="group">
-              <img 
+              <Image 
                 src="/sponsors/sep white.png" 
                 alt="SEP - Startup Engineering Program" 
                 className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+                width={80}
+                height={80}
               />
             </div>
             
             {/* SIF */}
             <div className="group">
-              <img 
+              <Image 
                 src="/sponsors/sif reg-white.png" 
                 alt="SIF - Student Innovation Fund" 
                 className="h-16 sm:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+                width={80}
+                height={80}
               />
             </div>
           </div>

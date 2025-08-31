@@ -1,7 +1,7 @@
 import HeroSlideshow, { type Slide } from "@/components/hero-slideshow"
 import TopNav from "@/components/top-nav"
 import Link from "next/link"
-import { cn, getButtonClass } from "@/lib/utils"
+import { getButtonClass } from "@/lib/utils"
 
 export default function StrokeRehabPage() {
   const slides: Slide[] = [
