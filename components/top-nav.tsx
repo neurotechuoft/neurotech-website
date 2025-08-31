@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+// import { ThemeToggle } from "@/components/theme-toggle"
 import { cn, getButtonClass } from "@/lib/utils"
 
 const items = [
@@ -87,7 +87,7 @@ export default function TopNav() {
                 </div>
               )
             })}
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Link
               href="/apply"
               className={cn(getButtonClass({ size: "sm" }), "ml-2")}
@@ -98,7 +98,7 @@ export default function TopNav() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2 md:hidden">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-foreground hover:text-purple-500 transition-colors p-2"
