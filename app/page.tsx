@@ -429,7 +429,7 @@ export default function NeurotechWebsite() {
       </section>
 
       {/* Sponsors Section */}
-      <section className="relative z-10 py-32 bg-gradient-to-b from-background via-muted/10 to-background overflow-hidden">
+      <section className="relative z-10 py-32 bg-gradient-to-b from-background via-white/50 to-background overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-20 w-64 h-64 bg-purple-500/3 rounded-full blur-3xl"></div>

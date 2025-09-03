@@ -14,7 +14,11 @@ const items = [
     { label: "Team", href: "/about/team" },
     { label: "Portfolio", href: "/about/portfolio" },
   ] },
-  { label: "R&D", href: "/projects" },
+  { label: "R&D", href: "/projects", children: [
+    { label: "Past Projects", href: "/projects/past" },
+    { label: "Stroke Rehab", href: "/projects/stroke-rehab" },
+    { label: "NeuronMove", href: "/projects/neuronmove" },
+  ] },
   { label: "Publications", href: "/publications" },
   { label: "Events", href: "/events" },
   { label: "Community", href: "/community", children: [
