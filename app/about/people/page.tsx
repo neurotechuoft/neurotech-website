@@ -1,30 +1,49 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import TopNav from "@/components/top-nav"
+import Image, { type StaticImageData } from "next/image"
+import usmanImage from "./images/Usman.jpg"
+import robertImage from "./images/Robert.jpg"
+import kyokoImage from "./images/Kyoko.jpg"
+import emmaImage from "./images/Emma.jpg"
+import advaithImage from "./images/Advaith.jpg"
+import louiseImage from "./images/Louise.jpg"
+import adityaImage from "./images/Aditya.jpg"
+import ameliaImage from "./images/Amelia.jpg"
+import amelyImage from "./images/Amely.jpg"
+import marounImage from "./images/Maroun.jpg"
+import catherineImage from "./images/Catherine.jpg"
+import patriciaImage from "./images/Patricia.jpg"
+import tuanaImage from "./images/Tuana.jpg"
+import angelaImage from "./images/Angela.jpg"
+
 
 type LeaderCard = {
   id: string
   name: string
   role: string
   program: string
-  image: string
+  image: StaticImageData | string
 }
 
 const people: LeaderCard[] = [
-  { id: "usman", name: "Usman Wani", role: "Co-President", program: "Biomedical/Mechatronics Engineering 2T7", image: "/images/Usman.jpg" },
-  { id: "shuntaro-wakamatsu", name: "Shuntaro Wakamatsu", role: "Co-President", program: "BASc 2T5 – Electrical & Computer Engineering", image: "/people/images/Shuntaro.jpg" },
-  { id: "usman-wani", name: "Usman Wani", role: "Co-President", program: "BASc 2T4 – Mechatronics", image: "/people/images/Usman.jpg" },
-  { id: "matthew-chen", name: "Matthew Chen", role: "VP Recruitment", program: "Computer Engineering 2T6", image: "/people/images/Matthew.jpg" },
-  { id: "kyoko-lin", name: "Kyoko Lin", role: "VP Logistics", program: "Industrial Engineering 2T5", image: "/people/images/Kyoko.jpg" },
-  { id: "derek-yu", name: "Derek Yu", role: "VP Administration", program: "Rotman Commerce 2T5", image: "/people/images/Derek.jpg" },
-  { id: "jean-jung", name: "Jean Jung", role: "VP Marketing", program: "Computer Science 2T5", image: "/team/jean-jung.jpg" },
-  { id: "noor-rahman", name: "Noor Rahman", role: "Director, Neuroscience", program: "Neuroscience & Physiology 2T5", image: "/team/noor-rahman.jpg" },
-  { id: "julian-park", name: "Julian Park", role: "Director, Software R&D", program: "Engineering Science 2T4", image: "/team/julian-park.jpg" },
-  { id: "ariel-sun", name: "Ariel Sun", role: "Director, Hardware Systems", program: "Mechanical Engineering 2T4", image: "/team/ariel-sun.jpg" },
-  { id: "micah-fernandez", name: "Micah Fernandez", role: "Program Manager, Community & Education", program: "Psychology & Computer Science 2T5", image: "/team/micah-fernandez.jpg" },
-  { id: "tara-nguyen", name: "Tara Nguyen", role: "Director, Partnerships", program: "Rotman Commerce 2T4", image: "/team/tara-nguyen.jpg" }
+  { id: "usman", name: "Usman Wani", role: "Co-President", program: "Biomedical/Mechatronics Engineering 2T7", image: usmanImage },
+    { id: "robert", name: "Robert Youssef", role: "Co-President", program: "Biomedical/Mechatronics Engineering 2T7", image: robertImage },
+  { id: "kyoko", name: "Kyoko Lin", role: "Co-President", program: "Neuroscience Specialist Third Year", image: kyokoImage },
+  { id: "emma", name: "Emma Ding", role: "VP Logistics", program: "Neuroscience Specialist Third Year", image: emmaImage },
+  { id: "advaith", name: "Advaith Gopaljee", role: "VP Finance", program: "Statistics Third Year", image: advaithImage },
+  { id: "louise", name: "Louise Lee", role: "VP Marketing", program: "Visual Design - Daniels Third Year", image: louiseImage },
+  { id: "aditya", name: "Aditya Mishra", role: "VP Outreach", program: "Industrial Engineering 2T7", image: adityaImage },
+  { id: "amelia", name: "Amelia Wu", role: "NeuronMove-V2 Project Manager", program: "Bioinformatics Year 3", image: ameliaImage },
+  { id: "amely", name: "Amely Vorontsov", role: "Post Stroke Rehab Manager", program: "Bioengineering + Mechatronics Engineering 2T7", image: amelyImage },
+  { id: "maroun", name: "Maroun Fares", role: "NeuronMove-V2 Hardware Director", program: "Mechanical Engineering 2T6", image: marounImage },
+  { id: "catherine", name: "Catherine Zhang", role: "Post Stroke Hardware Director", program: "Bioengineering + Mechatronics Engineering 2T7", image: catherineImage },
+  { id: "patricia", name: "Patricia Watanabe", role: "NeuronMove-V2 Software Director", program: "PhD candidate", image: patriciaImage },
+  { id: "tuana", name: "Tuana Agrikli", role: "NeuronMove-V2 Neuroscience Director", program: "Neuroscience Year 2", image: tuanaImage },
+  { id: "angela", name: "Angela Jiang",  role: "Post Stroke Neuroscience Director", program: "Neuroscience + Cognitive Science Year 3", image: angelaImage },
+
+
 ]
 
 const defaultImage = "/next.svg"

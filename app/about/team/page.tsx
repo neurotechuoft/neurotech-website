@@ -2,12 +2,14 @@ import Link from "next/link"
 import TopNav from "@/components/top-nav"
 
 const teams = [
-  { slug: "hardware", name: "Hardware", blurb: "Building devices and interfaces" },
-  { slug: "software", name: "Software", blurb: "Algorithms, apps, infrastructure" },
-  { slug: "neuroscience", name: "Neuroscience", blurb: "Signal processing and biology" },
-  { slug: "outreach", name: "Outreach", blurb: "Community and partnerships" },
-  { slug: "content", name: "Content Creation", blurb: "Design and storytelling" },
-  { slug: "podcast", name: "Podcast", blurb: "Conversations in Neurotech" },
+  { slug: "hardware", name: "Hardware@R&D (NeuronMove - version 2)", blurb: "Building devices and interfaces" },
+  { slug: "software", name: "Software @R&D (NeuronMove - v2)", blurb: "Algorithms, apps, infrastructure" },
+  { slug: "neuroscience", name: "Neuroscience @R&D (NeuronMove -v2)", blurb: "Signal processing and biology" },
+  { slug: "posthardware", name: "Hardware@R&D (Post-Stroke Rehab)", blurb: "Community and partnerships" },
+  { slug: "neurornd", name: "Neuroscience @R&D ((Post-Stroke Rehab))", blurb: "Design and storytelling" },
+  { slug: "outreach", name: "Outreach", blurb: "Conversations in Neurotech" },
+    { slug: "content", name: "Content Creation", blurb: "Conversations in Neurotech" },
+      { slug: "podcast", name: "Podcast", blurb: "Conversations in Neurotech" },
 ]
 
 export default function TeamIndexPage() {
