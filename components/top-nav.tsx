@@ -19,13 +19,13 @@ const items = [
     { label: "Stroke Rehab", href: "/projects/stroke-rehab" },
     { label: "NeuronMove", href: "/projects/neuronmove" },
   ] },
-  { label: "Publications", href: "/publications" },
   { label: "Events", href: "/events" },
   { label: "Community", href: "/community", children: [
     { label: "NeurON Air", href: "/community/air" },
     { label: "Education", href: "/community/education" },
     { label: "Newsletter", href: "/community/newsletter" },
   ] },
+  { label: "Publications", href: "/publications" },
   { label: "Contact", href: "/contact" },
 ]
 

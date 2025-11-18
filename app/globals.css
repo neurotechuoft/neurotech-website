@@ -160,3 +160,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fadeWord {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  29% { opacity: 1; }
+  33% { opacity: 0; }
+  100% { opacity: 0; }
+}

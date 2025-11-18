@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+//import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { GradientButton } from "@/components/ui/gradient-button"
@@ -9,6 +9,36 @@ import TopNav from "@/components/top-nav"
 import HeroSlideshow from "@/components/hero-slideshow"
 import Footer from "@/components/footer"
 import { getUpcomingEvents } from "@/lib/events"
+
+//'use client';
+import { useState, useEffect } from 'react';
+
+// Add this component at the top of your file or in a separate component
+function RotatingText() {
+  const words = ['ENGINEERING', 'TECH', 'ROBOTICS', 'AI', 'MODULATION', 'STIMULATION', 'PROSTHETICS', 'EVERYTHING'];
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        setFade(true);
+      }, 500);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span 
+      className={`inline-block transition-opacity duration-500 ml-1 ${fade ? 'opacity-100' : 'opacity-0'}`}
+    >
+      {words[index]}
+    </span>
+  );
+}
 
 export default function NeurotechWebsite() {
   // Reveal hero text and show nav immediately (no intro lock)
@@ -165,10 +195,26 @@ export default function NeurotechWebsite() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <HeroSlideshow
             slides={[
-              { type: 'video', src: '/brain-loop.mp4', alt: 'Brain animation' },
-              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 1' },
-              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 2' },
-              { type: 'image', src: '/brain-wallpaper.jpg', alt: 'Brain wallpaper 3' },
+              //{ type: 'video', src: '/brain-loop.mp4', alt: 'Brain animation' },
+              { type: 'image', src: '/t6-1.jpg', alt: 'Brain wallpaper 1' },
+              { type: 'image', src: '/t6-2.jpeg', alt: 'Brain wallpaper 2' },
+              { type: 'image', src: '/t6-3.jpg', alt: 'Brain wallpaper 3' },
+              { type: 'image', src: '/t6-4.jpeg', alt: 'Brain wallpaper 4' },
+              { type: 'image', src: '/t6-5.jpg', alt: 'Brain wallpaper 5' },
+              { type: 'image', src: '/t6-6.jpg', alt: 'Brain wallpaper 6' },
+              { type: 'image', src: '/t6-7.jpeg', alt: 'Brain wallpaper 7' },
+              { type: 'image', src: '/t6-8.jpg', alt: 'Brain wallpaper 8' },
+              { type: 'image', src: '/t6-9.jpg', alt: 'Brain wallpaper 9' },
+              { type: 'image', src: '/t6-10.jpg', alt: 'Brain wallpaper 10' },
+              { type: 'image', src: '/t6-11.jpg', alt: 'Brain wallpaper 11' },
+              { type: 'image', src: '/t6-12.jpg', alt: 'Brain wallpaper 12' },
+              { type: 'image', src: '/t6-13.jpg', alt: 'Brain wallpaper 13' },
+              { type: 'image', src: '/t6-14.jpg', alt: 'Brain wallpaper 14' },
+              { type: 'image', src: '/t6-15.jpg', alt: 'Brain wallpaper 15' },
+              { type: 'image', src: '/t6-16.jpg', alt: 'Brain wallpaper 16' },
+              { type: 'image', src: '/t6-17.jpg', alt: 'Brain wallpaper 17' },
+              { type: 'image', src: '/t6-18.jpg', alt: 'Brain wallpaper 18' },
+              { type: 'image', src: '/t6-19.jpg', alt: 'Brain wallpaper 19' },
             ]}
             intervalMs={5000}
           />
@@ -179,24 +225,10 @@ export default function NeurotechWebsite() {
             showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 leading-tight text-foreground">
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                NeurotechUofT
-            </span>
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join the next generation of Neurotechnology and neuroscience enthusiasts.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
-            <GradientButton href="/events">
-              View Events
-            </GradientButton>
-            <GradientButton href="/projects">
-              Explore Projects
-            </GradientButton>
-          </div>
+        </div>
 
-          <div className="mt-10 text-center">
+        
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20mt-10 text-center">
             <button
               onClick={() => {
                 document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
@@ -204,14 +236,13 @@ export default function NeurotechWebsite() {
               className="w-6 h-6 border-2 border-purple-400 rounded-full mx-auto animate-bounce cursor-pointer hover:border-white transition-colors duration-300"
             />
           </div>
-        </div>
 
         {/* Gradient fade to next section */}
   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none"></div>
       </section>
 
       {/* About Section */}
-  <section id="about" className="relative z-10 py-32 px-6 bg-background">
+  <section id="about" className="relative z-10 pt-16 pb-32 px-6 bg-background">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -221,19 +252,31 @@ export default function NeurotechWebsite() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Text Content */}
-            <div className="transform transition-all duration-1000 ease-out flex flex-col justify-center h-full" data-animate="slideInLeft">
-              <div className="mb-4">
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-foreground leading-tight">
-                Engineering the future of
-                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  {" "}human potential at the University of Toronto.
-                </span>
-              </h2>
-              <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">
-                For a decade, NeurotechUofT has been at the forefront of student-led innovation in neurotechnology. We&apos;ve grown from a small group of enthusiasts to a vibrant community of over 200 members, pioneering breakthrough research and fostering the next generation of neurotech leaders.
-              </p>
-              <Link href="/projects" className="inline-flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-indigo-500/25 border border-indigo-400/30 hover:border-indigo-300/50 text-sm">Check out our R&D & Events</Link>
+              <div className="transform transition-all duration-1000 ease-out flex flex-col justify-center h-full" data-animate="slideInLeft">
+                
+                <div className="mb-8">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent leading-tight">
+                    Celebrating a decade of NeurotechUofT
+                  </h1>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    Ten years of building what others only imagine.
+                  </p>
+                </div>
+
+
+                  <h2 className="text-base sm:text-xl md:text-2xl lg:text-3xl font-light mb-2 leading-tight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                    Engineering the future of human potential at the University of Toronto.
+                  </h2>
+                                            
+              <p className="text-xs sm:text-sm text-muted-foreground mb-3 leading-relaxed">
+                NeurotechUofT (NTUT) is the University of Toronto’s only student design team dedicated exclusively to neuroengineering, where neuroscience meets engineering to solve real healthcare challenges. We design biomedical systems like biosignal-driven prosthetic limbs, EEG acquisition pipelines, EMG-based motor control, and neuromodulation-inspired assistive devices. Our work spans three subsystems: Hardware builds embedded signal acquisition and actuator systems, Software develops real-time processing and machine learning models, and Neuroscience ensures clinical and physiological relevance. Collaborating with Krembil Brain Institute, UHN, and the Institute of Biomedical Engineering, NTUT offers observerships, mentorship, and a community where students don’t just study the brain; they build for it.
+                </p>
+
+                      <div className="flex flex-wrap gap-3">  
+              <Link href="/about" className="inline-flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-indigo-500/25 border border-indigo-400/30 hover:border-indigo-300/50 text-sm">About Us</Link>
+              <Link href="/projects" className="inline-flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-indigo-500/25 border border-indigo-400/30 hover:border-indigo-300/50 text-sm">R&D Projects</Link> 
+              <Link href="/events" className="inline-flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md font-light transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-indigo-500/25 border border-indigo-400/30 hover:border-indigo-300/50 text-sm">Events</Link>
+            </div>
             </div>
             {/* Right Column - Image Only */}
             <div className="flex flex-col items-center justify-center h-full">
@@ -243,17 +286,40 @@ export default function NeurotechWebsite() {
         </div>
       </section>
 
+{/* Upcoming Events (teaser) */}
     {/* Upcoming Events (teaser) */}
-    <section id="events" className="relative z-10 py-32 px-6 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="text-sm uppercase tracking-wider text-purple-400 font-light">What&apos;s happening</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mt-3">Upcoming Events</h2>
+    <section id="events" className="relative z-10 py-0 px-6 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto relative">
+       {/* Left Image */}
+        <img 
+          src="/t14.jpg" 
+          alt="Left decoration" 
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-1/4 max-w-md h-auto object-cover ml-8"
+        />
+        
+        {/* Right Image */}
+        <img 
+          src="/t15.jpg" 
+          alt="Right decoration" 
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-1/4 max-w-md h-auto object-cover mr-8"
+        />
+        
+        <div className="text-center mb-8">
+          <div className="flex justify-center items-center mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">
+                #NEURO
+              </span>
+              <RotatingText />
+            </h2>
+          </div>
+          
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mt-12 mb-2">Upcoming Events</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Join us for workshops, talks, and mixers.
           </p>
         </div>
-
+        
         {/* Events Auto-Scrolling Container */}
         <div className="relative">
           <div 
@@ -268,8 +334,8 @@ export default function NeurotechWebsite() {
               {/* Original Events */}
               {[...getUpcomingEvents(4), ...getUpcomingEvents(4)].map((e, index) => (
                 <Link 
-                  key={`${e.slug}-${index}`} 
-                  href={`/events/${e.slug}`} 
+                  key={`${e.slug}-${index}`}
+                  href={`/events/${e.slug}`}
                   className="flex-none w-[300px] sm:w-[400px] bg-card/60 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-border hover:scale-105 hover:z-10 transition-all duration-500 ease-out"
                 >
                   <div className="flex items-center justify-between mb-4">
@@ -288,13 +354,12 @@ export default function NeurotechWebsite() {
             </div>
           </div>
         </div>
-
-        <div className="text-center mt-10">
-          <GradientButton href="/events">View all events →</GradientButton>
+        <div className="text-center">
+          <GradientButton href="/events">Events</GradientButton>
         </div>
       </div>
     </section>
-
+    
       {/* Testimonials Section */}
       <section className="relative z-10 py-32 px-6 bg-background overflow-hidden">
         {/* Animated background elements */}
@@ -308,15 +373,13 @@ export default function NeurotechWebsite() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <div className="mb-6">
-              <span className="text-sm uppercase tracking-wider text-purple-400 font-light">
+              <span className="text-sm uppercase tracking-wider text-white-400 font-light">
                 TESTIMONIALS
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight mb-8">
               Our Community  
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                 Speaks
-              </span>
+
             </h2>
           </div>
 
