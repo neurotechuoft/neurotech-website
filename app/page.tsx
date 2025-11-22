@@ -13,17 +13,19 @@ import { getUpcomingEvents } from "@/lib/events"
 //'use client';
 import { useState, useEffect } from 'react';
 
+const ROTATING_WORDS = ['ENGINEERING', 'TECH', 'ROBOTICS', 'AI', 'MODULATION', 'STIMULATION', 'PROSTHETICS', 'EVERYTHING']
+
 // Add this component at the top of your file or in a separate component
 function RotatingText() {
-  const words = ['ENGINEERING', 'TECH', 'ROBOTICS', 'AI', 'MODULATION', 'STIMULATION', 'PROSTHETICS', 'EVERYTHING'];
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
+    const totalWords = ROTATING_WORDS.length
     const interval = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % words.length);
+        setIndex((prev) => (prev + 1) % totalWords);
         setFade(true);
       }, 500);
     }, 3000);
@@ -35,7 +37,7 @@ function RotatingText() {
     <span 
       className={`inline-block transition-opacity duration-500 ml-1 ${fade ? 'opacity-100' : 'opacity-0'}`}
     >
-      {words[index]}
+      {ROTATING_WORDS[index]}
     </span>
   );
 }
@@ -291,17 +293,23 @@ export default function NeurotechWebsite() {
     <section id="events" className="relative z-10 py-0 px-6 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
        {/* Left Image */}
-        <img 
+        <Image 
           src="/t14.jpg" 
           alt="Left decoration" 
           className="absolute left-0 top-1/2 -translate-y-1/2 w-1/4 max-w-md h-auto object-cover ml-8"
+          width={400}
+          height={600}
+          sizes="(max-width: 1024px) 35vw, 25vw"
         />
         
         {/* Right Image */}
-        <img 
+        <Image 
           src="/t15.jpg" 
           alt="Right decoration" 
           className="absolute right-0 top-1/2 -translate-y-1/2 w-1/4 max-w-md h-auto object-cover mr-8"
+          width={400}
+          height={600}
+          sizes="(max-width: 1024px) 35vw, 25vw"
         />
         
         <div className="text-center mb-8">

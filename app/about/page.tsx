@@ -57,13 +57,13 @@ export default function AboutPage() {
     }
   ]
   const corePrinciples = [
-    { title: "Think From First Principles", desc: "Don’t copy. Don’t assume. When faced with a challenge, break it down into smaller problems. Identify what’s known, isolate what isn’t, and reason up with fundamentals from the ground.", accent: "from-purple-400/40 via-blue-400/30 to-transparent" },
-    { title: "Challenge Ideas, Not People", desc: "Debate is welcome, but egos aren’t. The best ideas win, not the loudest voices. Every voice matters, but professionalism is non-negotiable.", accent: "from-amber-400/40 via-orange-400/20 to-transparent" },
+    { title: "Think From First Principles", desc: "Don&rsquo;t copy. Don&rsquo;t assume. When faced with a challenge, break it down into smaller problems. Identify what&rsquo;s known, isolate what isn&rsquo;t, and reason up with fundamentals from the ground.", accent: "from-purple-400/40 via-blue-400/30 to-transparent" },
+    { title: "Challenge Ideas, Not People", desc: "Debate is welcome, but egos aren&rsquo;t. The best ideas win, not the loudest voices. Every voice matters, but professionalism is non-negotiable.", accent: "from-amber-400/40 via-orange-400/20 to-transparent" },
     { title: "Facts > Feelings, but Instinct Always Wins", desc: "Lead with common sense, reasoning, and data. But when the evidence runs out and decisions still need to be made, listen to others, then trust your gut and move on.", accent: "from-slate-200/30 via-slate-400/20 to-transparent" },
     { title: "Commit to the Process", desc: "Great engineering may come with trade-offs: time, comfort, or certainty. Progress often requires stretching beyond what feels easy, but never expect to carry the weight alone. Ask for support when in need. Take pride in the growth that comes with working together as a team.", accent: "from-yellow-300/40 via-amber-400/30 to-transparent" },
-    { title: "You’re measured at your worst, not your best", desc: "It’s easy to be focused when things are smooth. But who we are shows up during the most stressful week of the year, when everything breaks and pressure peaks.", accent: "from-emerald-300/40 via-teal-300/30 to-transparent" },
-    { title: "The Most Dangerous Word in Our Dictionary: Bureaucracy", desc: "Process matters, but progress matters more. Skip unnecessary chains of command if they exist, and don’t create hierarchy where it isn’t needed. Minimize meetings and regulations to maximize creative independence. We care about getting things done, not protocol for protocol’s sake.", accent: "from-cyan-300/40 via-blue-400/30 to-transparent" },
-    { title: "Think Beyond Limits, Build Within Reach", desc: "It’s good to aim higher than what seems realistic. Every breakthrough began as a “what if.” Be bold when imagining what’s possible, and realistic when planning how to get there. Balancing vision with pragmatism is what drives true progress.", accent: "from-pink-300/40 via-rose-400/30 to-transparent" }
+    { title: "You&rsquo;re measured at your worst, not your best", desc: "It&rsquo;s easy to be focused when things are smooth. But who we are shows up during the most stressful week of the year, when everything breaks and pressure peaks.", accent: "from-emerald-300/40 via-teal-300/30 to-transparent" },
+    { title: "The Most Dangerous Word in Our Dictionary: Bureaucracy", desc: "Process matters, but progress matters more. Skip unnecessary chains of command if they exist, and don&rsquo;t create hierarchy where it isn&rsquo;t needed. Minimize meetings and regulations to maximize creative independence. We care about getting things done, not protocol for protocol&rsquo;s sake.", accent: "from-cyan-300/40 via-blue-400/30 to-transparent" },
+    { title: "Think Beyond Limits, Build Within Reach", desc: "It&rsquo;s good to aim higher than what seems realistic. Every breakthrough began as a &ldquo;what if.&rdquo; Be bold when imagining what&rsquo;s possible, and realistic when planning how to get there. Balancing vision with pragmatism is what drives true progress.", accent: "from-pink-300/40 via-rose-400/30 to-transparent" }
   ]
 
   return (
@@ -88,7 +88,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto px-4">
-We are the only group of ambitious undergraduate students at the University of Toronto that's obsessed with educating and engineerng neurotechnology projects to benefit the greater university & Toronto community.          </p>
+We are the only group of ambitious undergraduate students at the University of Toronto that is obsessed with educating and engineering neurotechnology projects to benefit the greater university and Toronto community.          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <GradientButton href="/about/people" variant="ghost">The Tenth Leadership</GradientButton>
             <GradientButton href="/about/team" variant="ghost">Teams</GradientButton>
@@ -123,7 +123,7 @@ We are the only group of ambitious undergraduate students at the University of T
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-For nearly a decade, NeurotechUofT has been shaping the landscape of undergraduate neuroengineering at the University of Toronto. What began in 2016 as a small group of students experimenting with EEG boards and early brain–computer interface workshops has grown into one of Toronto's most active and enduring student-run neurotechnology communities.                </p>
+For nearly a decade, NeurotechUofT has been shaping the landscape of undergraduate neuroengineering at the University of Toronto. What began in 2016 as a small group of students experimenting with EEG boards and early brain–computer interface workshops has grown into one of the most active and enduring student-run neurotechnology communities in Toronto.                </p>
               </div>
               <div className="mt-10">
               </div>
@@ -165,9 +165,9 @@ The team develops small but creative North American NeuroTechX (NTX) competition
                   <div className="text-sm text-blue-400 font-light mb-2">Today</div>
                   <h3 className="text-xl font-light text-foreground mb-2">The Most Active and Significant Evolution in Our History
 </h3>
-                  <p className="text-muted-foreground">2025 marks the most transformative year NeurotechUofT has ever experienced. The team doubles in size and adopts a more rigorous recruitment standard, and officially opening its doors to highly engaged Master's & PhD Students. 
+                  <p className="text-muted-foreground">2025 marks the most transformative year NeurotechUofT has ever experienced. The team doubles in size and adopts a more rigorous recruitment standard, and officially opening its doors to highly engaged masters and PhD students. 
 
-With the introduction of the 7 Core Principles, NeurotechUofT strengthens its identity around first-principles reasoning, accountability, and high technical standards. This new culture sets the stage for launching two major R&D projects: NeuronMove v2, an advanced continuation of our Parkinson’s closed-loop system, and the Post-Stroke Rehabilitation (PSR) Project with UTMIST, expanding our work into neurorehabilitation. These initiatives, alongside deepened affiliations with the Krembil Brain Institute and SickKids, elevate NTUT’s visibility among clinicians, neuroscientists, and neurosurgeons, creating new pathways for students to contribute to impactful academic research and published scientific work.
+With the introduction of the 7 Core Principles, NeurotechUofT strengthens its identity around first-principles reasoning, accountability, and high technical standards. This new culture sets the stage for launching two major R&D projects: NeuronMove v2, an advanced continuation of our Parkinson&rsquo;s closed-loop system, and the Post-Stroke Rehabilitation (PSR) Project with UTMIST, expanding our work into neurorehabilitation. These initiatives, alongside deepened affiliations with the Krembil Brain Institute and SickKids, elevate NTUT&rsquo;s visibility among clinicians, neuroscientists, and neurosurgeons, creating new pathways for students to contribute to impactful academic research and published scientific work.
 
 Beyond R&D, the Community & Education Arm is fully rebuilt, expanding workshops, clinical observorships, pipelines, and learning programs for both undergraduate and graduate members. NeurotechUofT also officially launches its podcast as a full-scale initiative, amplifying our presence in the broader neurotechnology community.</p>
                 </div>
@@ -194,7 +194,7 @@ Beyond R&D, the Community & Education Arm is fully rebuilt, expanding workshops,
               </span>
             </h2>
             <blockquote className="text-xl text-muted-foreground italic max-w-4xl mx-auto leading-relaxed">
-              &quot;NeurotechUofT’s mission is to empower students to design neuroengineering technologies that create real, measurable impact in healthcare. As U of T’s only student design team dedicated exclusively to neuroengineering, we bring together engineering, neuroscience, and clinical insight to develop systems that advance human function: from biosignal-driven prosthetics to neuromodulation-inspired assistive devices. Through collaborations with the Krembil Brain Institute, UHN, SickKids, and the Institute of Biomedical Engineering, we offer students observerships, mentorship, and hands-on exposure to clinical and academic environments. At NTUT, students don’t just learn about the brain, they engineer solutions for it. &quot;
+              &ldquo;NeurotechUofT&rsquo;s mission is to empower students to design neuroengineering technologies that create real, measurable impact in healthcare. As U of T&rsquo;s only student design team dedicated exclusively to neuroengineering, we bring together engineering, neuroscience, and clinical insight to develop systems that advance human function: from biosignal-driven prosthetics to neuromodulation-inspired assistive devices. Through collaborations with the Krembil Brain Institute, UHN, SickKids, and the Institute of Biomedical Engineering, we offer students observerships, mentorship, and hands-on exposure to clinical and academic environments. At NTUT, students don&rsquo;t just learn about the brain, they engineer solutions for it.&rdquo;
             </blockquote>
 <div className="mt-6 text-sm uppercase tracking-[0.3em] text-purple-200/80">Our work spans three tightly integrated subsystems</div>
           </div>
